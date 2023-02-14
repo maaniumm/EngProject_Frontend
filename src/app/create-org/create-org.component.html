@@ -1,0 +1,67 @@
+<div class="content">
+  <h1>Stwórz orgazniację</h1>
+
+  <div class="form">
+    <h3>Nazwa jednostki</h3>
+    <form>
+
+      <div class="form-row">
+        <input type="text" placeholder="Nazwa"/>
+      </div>
+
+      <div class="form-row">
+        <img alt="user" src="assets/images/info.svg">
+      </div>
+
+      <div class="form-row">
+        <input type="text" placeholder="logo_organizacji.jpg"/>
+      </div>
+
+      <div class="form-row">
+        <button class="btn btn-primary">Wybierz zdjęcie</button>
+      </div>
+
+      <p>Wybierz organizację nadrzędną z listy poniżej</p>
+
+      <clr-select-container class="form-row">
+        <select clrSelect name="options">
+          <option value="one">4 Poznański Hufiec</option>
+          <option value="two">5 Poznański Hufiec</option>
+        </select>
+      </clr-select-container>
+
+      <div class="form-row">
+        <button class="btn btn-primary">Zapisz</button>
+      </div>
+
+      <div class="form-row">
+        <span class="form-error">Źle uzupełniłeś dane!</span>
+      </div>
+
+    </form>
+    <hr>
+
+    <h3>Członkowie jednostki</h3>
+
+    <form>
+
+      <clr-select-container class="form-row">
+        <select clrSelect name="options">
+          <option value="one">Jan Kowalski</option>
+          <option value="two">Andrzej Nowak</option>
+        </select>
+      </clr-select-container>
+
+      <clr-select-container class="form-row">
+        <select clrSelect name="options">
+          <option value="one">Funkcja 1</option>
+          <option value="two">Funkcja 2</option>
+        </select>
+      </clr-select-container>
+
+    </form>
+
+  </div>
+
+
+</div>
