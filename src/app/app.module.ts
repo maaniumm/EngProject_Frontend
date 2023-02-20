@@ -24,6 +24,8 @@ import {ClarityIcons, userIcon, tasksIcon, cogIcon, infoCircleIcon} from '@cds/c
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CreateOrgComponent } from './create-org/create-org.component';
+import { CreateOrderComponent } from './create-order/create-order.component';
+import { CreateInstructorattemptComponent } from './create-instructorattempt/create-instructorattempt.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -42,7 +44,9 @@ export function tokenGetter() {
     SideNavComponent,
     ManageProfileComponent,
     UserProfileComponent,
-    CreateOrgComponent
+    CreateOrgComponent,
+    CreateOrderComponent,
+    CreateInstructorattemptComponent
   ],
   imports: [
     BrowserModule,
