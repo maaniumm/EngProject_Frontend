@@ -12,6 +12,8 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {ManageProfileComponent} from "./manage-profile/manage-profile.component";
 import {UserProfileComponent} from "./user-profile/user-profile.component";
 import {CreateOrgComponent} from "./create-org/create-org.component";
+import {CreateOrderComponent} from "./create-order/create-order.component";
+import {CreateInstructorattemptComponent} from "./create-instructorattempt/create-instructorattempt.component";
 
 const routes: Routes = [
   {path: 'forgetpassword', component:ResetPasswordComponent},
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path: 'manageprofile' ,component:ManageProfileComponent},
   {path: 'userprofile' ,component:UserProfileComponent},
   {path: 'createorg' ,component:CreateOrgComponent},
+  {path: 'createorder' ,component:CreateOrderComponent},
+  {path: 'createinsturctorattempt' ,component:CreateInstructorattemptComponent},
   {path: '', canActivate:[AuthenticationGuard], children: [
   {path: '' ,component:HomeComponent}]}
 ];
