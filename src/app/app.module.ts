@@ -20,12 +20,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 
 import '@cds/core/icon/register.js';
-import {ClarityIcons, userIcon, tasksIcon, cogIcon, infoCircleIcon} from '@cds/core/icon';
+import '@cds/core/select/register.js';
+import {ClarityIcons, userIcon, tasksIcon, cogIcon, infoCircleIcon, bullseyeIcon, timesCircleIcon, flameIcon} from '@cds/core/icon';
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CreateOrgComponent } from './create-org/create-org.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
 import { CreateInstructorattemptComponent } from './create-instructorattempt/create-instructorattempt.component';
+
+ClarityIcons.addIcons(userIcon, tasksIcon, cogIcon, infoCircleIcon, bullseyeIcon, timesCircleIcon, flameIcon);
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
