@@ -1,0 +1,73 @@
+<div class="content">
+  <h1>Stwórz próbę na Stopień Harcerski</h1>
+  <div class="form">
+    <form>
+      <div class="form-row">
+        <input type="text" placeholder="Nazwa próby"/>
+      </div>
+      <div class="form-row">
+        <select clrSelect style="width: 100%;">
+          <option value="0">Stopień harcerski 1</option>
+          <option value="1">Stopień harcerski 2</option>
+          <option value="2">Stopień harcerski 3</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="header">
+          <div class="header-text">
+            Wymagania na stopnie w pdf
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="text-area-panel">
+          <clr-textarea-container>
+                        <textarea ng-model="tasks" clrTextarea style="width: 100% !important; height: 140px !important;">Textarea: Wpisujesz treść zadania i dodajesz do listy poniżej, która jest wyświetlana w formie tabelki i następnie jak się utworzy próba wysyłana jako jedna zmienna. Z listy poniżej można usunąć zadanie bo jest to na froncie
+                        </textarea>
+          </clr-textarea-container>
+          <div class="form-row">
+            <button class="btn">Dodaj zadanie</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Zadanie</th>
+            <th>Akcja</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Lorem lorem</td>
+            <td><cds-icon shape="times-circle"></cds-icon></td>
+          </tr>
+          <tr>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+            <td><cds-icon shape="times-circle"></cds-icon></td>
+          </tr>
+          <tr>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+            <td><cds-icon shape="times-circle"></cds-icon></td>
+          </tr>
+          <tr>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+            <td><cds-icon shape="times-circle"></cds-icon></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-row">
+        <div class="header">
+          <div class="header-text">
+            Utwórz próbę
+          </div>
+        </div>
+        <span class="form-error">
+                    Źle uzupełniłeś dane
+                </span>
+      </div>
+    </form>
+  </div>
+</div>

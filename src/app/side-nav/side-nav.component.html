@@ -1,4 +1,12 @@
 <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
+  <a clrVerticalNavLink routerLink="login" routerLinkActive="active">
+    <cds-icon clrVerticalNavIcon shape="login"></cds-icon>
+    Zaloguj się
+  </a>
+  <a clrVerticalNavLink routerLink="register" routerLinkActive="active">
+    <cds-icon clrVerticalNavIcon shape="plus"></cds-icon>
+    Zarejestruj się
+  </a>
   <a clrVerticalNavLink routerLink="userprofile" routerLinkActive="active">
     <cds-icon clrVerticalNavIcon shape="user"></cds-icon>
     Twój profil
@@ -15,6 +23,10 @@
     <cds-icon clrVerticalNavIcon shape="tasks"></cds-icon>
     Stwórz organizację
   </a>
+  <a clrVerticalNavLink routerLink="editorg">
+    <cds-icon clrVerticalNavIcon shape="note"></cds-icon>
+    Edytuj organizację
+  </a>
   <a clrVerticalNavLink routerLink="createorder">
     <cds-icon clrVerticalNavIcon shape="flame"></cds-icon>
     Stwórz rozkaz
@@ -22,5 +34,17 @@
   <a clrVerticalNavLink routerLink="createinsturctorattempt">
     <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>
     Swtórze próbę na stopień instuktorski
+  </a>
+  <a clrVerticalNavLink routerLink="createscouttempt">
+    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>
+    Swtórze próbę na stopień harcerski
+  </a>
+  <a clrVerticalNavLink routerLink="createmeritbadgeattempt">
+    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>
+    Swtórze próbę na sprawność
+  </a>
+  <a clrVerticalNavLink routerLink="badgesrankdashboard">
+    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>
+    Stopnie i sprawności
   </a>
 </clr-vertical-nav>
