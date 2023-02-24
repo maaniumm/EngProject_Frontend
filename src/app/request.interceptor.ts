@@ -20,7 +20,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
     const access_token = localStorage.getItem('access_token');
     if(access_token) {
-      request = request.clone({headers: request.headers.set('Authorization', "Bearer" + access_token)})
+      request = request.clone({headers: request.headers.set('Authorization', "Bearer " + access_token)})
       return next.handle(request);
     } else {
       return next.handle(request);

@@ -88,13 +88,13 @@ clr-progress-bar{
 }
 
 .ef-image-container{
-  border-right: 4px dotted black;
-  border-bottom: 4px dotted black;
-  border-left: 4px solid black;
-  border-top: 4px dotted black;
-  border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
+  /*border-right: 4px dotted black;*/
+  /*border-bottom: 4px dotted black;*/
+  /*border-left: 4px solid black;*/
+  /*border-top: 4px dotted black;*/
+  /*border-radius: 50%;*/
+  width: 7rem;
+  height: 7rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -103,14 +103,25 @@ clr-progress-bar{
 }
 
 .ef-image{
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
   padding: 1rem;
   position: relative;
   z-index: 9999;
   rotate: -50deg;
 }
-
+.ef-image[title]:hover:after {
+  content: attr(data);
+  padding: 4px 8px;
+  color: rgba(0,0,0,0.5);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  white-space: nowrap;
+  z-index: 2;
+  border-radius: 5px ;
+  background: rgba(0,0,0,0.5);
+}
 .filled{
   background-color: black;
 }
