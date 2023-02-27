@@ -7,7 +7,7 @@
   position: relative;
   width: 10rem;
   border-radius: 50%;
-  border: 5px solid hsl(93, 100%, 26%);
+  border: 5px solid var(--scoutInstructorColor);
   padding-top: .1rem;
 
 }
@@ -31,11 +31,12 @@ hr{
 
 .badge-img{
   width: 5rem;
-  background-color: hsl(93, 100%, 26%);
+  background-color: var(--scoutInstructorColor);
   border-radius: 50%;
   position: relative;
   left: -3rem;
   top: 2.5rem;
+  padding: 5px;
 }
 
 .user-data{

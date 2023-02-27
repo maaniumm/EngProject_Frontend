@@ -9,7 +9,7 @@
       </div>
       <img  class="user-img" alt="user" src="assets/images/user.svg">
       <span class="img-badge">
-        <img class="badge-img" alt="badge" src="assets/images/polska-stary-krzyz-harcerski-czuwaj-cdh-19467-removebg-preview.png">
+        <img class="badge-img" alt="badge" src="assets/images/scoutMark/{{userDetails.data.userProfilDetails.scoutRank.imageURL}}">
       </span>
     </div>
 
@@ -38,45 +38,32 @@
       </div>
     </div>
 
-    <div class="clr-col-6">
+    <div class="clr-col-6" *ngIf="userDetails">
 
       <span class="column-header">Twoje jednostki</span>
 
       <table class="table">
         <thead>
         <tr>
-          <th>Decimal</th>
-          <th>Hexadecimal</th>
-          <th>Binary</th>
+          <th>Logotyp</th>
+          <th>Nazwa jednostki</th>
+          <th>Typ jednostki</th>
+          <th>Pełniona funkcja</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr *ngFor="let role of userDetails.data.userProfilDetails.roles">
           <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-          <td>Lorem</td>
-        </tr>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-          <td>Lorem</td>
-        </tr>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-          <td>Lorem</td>
-        </tr>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-          <td>Lorem</td>
+          <td>{{ role.organizationRole.name }}</td>
+          <td>{{ role.organizationRole.organizationType}}</td>
+          <td>{{ role.name}}</td>
         </tr>
         </tbody>
       </table>
 
       <span class="column-header">Twoje próby</span>
 
-      <span class="column-subheader">Na stopnie harcerskie</span>
+      <span class="column-subheader">Próby których jesteś opiekunem</span>
       <table class="table">
         <thead>
         <tr>
@@ -103,7 +90,7 @@
         </tr>
         </tbody>
       </table>
-      <span class="column-subheader">Na stopnie instruktorskie</span>
+      <span class="column-subheader">Próby które realizujesz</span>
       <table class="table">
         <thead>
         <tr>

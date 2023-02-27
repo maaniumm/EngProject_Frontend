@@ -4,7 +4,10 @@ html, body, p, span{
   margin: 0;
 }
 
-
+:root {
+  --defoultColor:  hsl(48, 95%, 48%);
+  --scoutInstructorColor: var(--defoultColor);
+}
 body{
   width: 100%;
   min-height: 100vh;
