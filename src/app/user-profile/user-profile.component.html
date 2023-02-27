@@ -1,23 +1,23 @@
 <div class="content">
 
-  <div class="user-profile">
+  <div class="user-profile" *ngIf="userDetails">
 
     <div class="user-image">
       <div class="user-data">
-        <span>Nick</span>
+        <span>{{ userDetails.data.userProfilDetails.nickName}}</span>
         <clr-progress-bar clrValue="72" clrSuccess clrLabeled></clr-progress-bar>
       </div>
       <img  class="user-img" alt="user" src="assets/images/user.svg">
       <span class="img-badge">
-        <img class="badge-img" alt="badge" src="assets/images/polska-stary-krzyz-harcerski-czuwaj-cdh-19467-removebg-preview.png">
+        <img class="badge-img" alt="badge" src="assets/images/scoutMark/{{userDetails.data.userProfilDetails.scoutRank.imageURL}}">
       </span>
     </div>
 
     <div class="user-info">
-      <span>Jan Kowalski</span>
-      <span>Harcerz Hrzeczpospolitej</span>
-      <span>Pogodny Baran</span>
-      <span>Podharcmistrz</span>
+      <span>{{ userDetails.data.userProfilDetails.name}} {{ userDetails.data.userProfilDetails.surname}}</span>
+      <span>{{ userDetails.data.userProfilDetails.scoutRank.name}}</span>
+      <span>{{ userDetails.data.userProfilDetails.nickName}}</span>
+      <span>{{ userDetails.data.userProfilDetails.scoutInstructorRank.name}}</span>
     </div>
   </div>
 
@@ -25,95 +25,45 @@
 
   <div class="clr-row">
 
-    <div class="clr-col-6 center">
+    <div class="clr-col-6 center" *ngIf="userDetails">
 
       <span class="column-header">Twoje sprawności</span>
 
       <div class="clr-row">
-        <div class="clr-col-4 center">
+        <div class="clr-col-4 center" *ngFor="let meritBadge of userDetails.data.userProfilDetails.meritBadges">
           <div class="ef-image-container">
-            <img class="ef-image" alt="image" src="assets/images/running.svg">
-          </div>
-        </div>
-        <div class="clr-col-4 center">
-          <div class="ef-image-container filled">
-            <img class="ef-image" alt="image" src="assets/images/shield.svg">
-          </div>
-        </div>
-        <div class="clr-col-4 center">
-          <div class="ef-image-container">
-            <img class="ef-image" alt="image" src="assets/images/walk.svg">
+            <img class="ef-image" alt="{{meritBadge.name}}" title="{{meritBadge.name}}" src="assets/images/meritBadgePhoto/{{meritBadge.imageURL}}">
           </div>
         </div>
       </div>
-
-      <div class="clr-row">
-        <div class="clr-col-4 center">
-          <div class="ef-image-container">
-            <img class="ef-image" alt="image" src="assets/images/walk.svg">
-          </div>
-        </div>
-        <div class="clr-col-4 center">
-          <div class="ef-image-container">
-            <img class="ef-image" alt="image" src="assets/images/walk.svg">
-          </div>
-        </div>
-        <div class="clr-col-4 center">
-          <div class="ef-image-container">
-            <img class="ef-image" alt="image" src="assets/images/walk.svg">
-          </div>
-        </div>
-      </div>
-
-      <div class="clr-row">
-        <div class="clr-col-12 center">
-          <div class="ef-image-container">
-            <img class="ef-image" alt="image" src="assets/images/walk.svg">
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <div class="clr-col-6">
+    <div class="clr-col-6" *ngIf="userDetails">
 
       <span class="column-header">Twoje jednostki</span>
 
       <table class="table">
         <thead>
         <tr>
-          <th>Decimal</th>
-          <th>Hexadecimal</th>
-          <th>Binary</th>
+          <th>Logotyp</th>
+          <th>Nazwa jednostki</th>
+          <th>Typ jednostki</th>
+          <th>Pełniona funkcja</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr *ngFor="let role of userDetails.data.userProfilDetails.roles">
           <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-          <td>Lorem</td>
-        </tr>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-          <td>Lorem</td>
-        </tr>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-          <td>Lorem</td>
-        </tr>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-          <td>Lorem</td>
+          <td>{{ role.organizationRole.name }}</td>
+          <td>{{ role.organizationRole.organizationType}}</td>
+          <td>{{ role.name}}</td>
         </tr>
         </tbody>
       </table>
 
       <span class="column-header">Twoje próby</span>
 
-      <span class="column-subheader">Na stopnie harcerskie</span>
+      <span class="column-subheader">Próby których jesteś opiekunem</span>
       <table class="table">
         <thead>
         <tr>
@@ -140,7 +90,7 @@
         </tr>
         </tbody>
       </table>
-      <span class="column-subheader">Na stopnie instruktorskie</span>
+      <span class="column-subheader">Próby które realizujesz</span>
       <table class="table">
         <thead>
         <tr>
