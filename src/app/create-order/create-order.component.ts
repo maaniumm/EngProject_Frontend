@@ -6,11 +6,13 @@ import {ACTION_TYPE} from "../enums/ACTION_TYPE";
 import {Organization} from "../models/Organization";
 import {NgForm} from "@angular/forms";
 import {Order} from "../models/Order";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-order',
   templateUrl: './create-order.component.html',
   styleUrls: ['./create-order.component.css']
+
 })
 export class CreateOrderComponent implements OnInit {
 
@@ -21,13 +23,15 @@ export class CreateOrderComponent implements OnInit {
   public actionQueueLinesCREATE_ORGANIZATION :ActionQueueLine[] = [];
   public actionQueueLinesGrantingAndRevoking_FUNCTION :ActionQueueLine[] = [];
   public orderOrganization : Organization = new Organization();
+  public showConfirmationFormModal = false;
+  public showErrorValidationModal = false;
 
   public finalOrderQueueLinesGRANTING_MERITBADGE_AND_RANKS:ActionQueueLine[]=[];
   public finalOrderQueueLinesCREATE_ORGANIZATION:ActionQueueLine[]=[];
   public finalOrderQueueLinesGrantingAndRevoking_FUNCTION:ActionQueueLine[]=[];
 
 
-  constructor(public  orderService:OrderService) {
+  constructor(public  orderService:OrderService,private router: Router) {
 
 
 
@@ -192,7 +196,10 @@ export class CreateOrderComponent implements OnInit {
 
 
 
-  public viewOrder(){
+  public viewOrder(form: NgForm){
+
+
+    if(form.valid) {
 
     this.newOrder.activeQueueLineDTOList = [];
 
@@ -217,16 +224,18 @@ export class CreateOrderComponent implements OnInit {
       window.open(url);
     })
 
-    //this.newOrder.activeQueueLineDTOList = [];
+    this.newOrder.activeQueueLineDTOList = [];
 
+    }else {
+      this.showErrorValidationModal=true;
+    }
 
 
   }
 
 
-  createOrder(form: NgForm){
+  createOrderFirstStep(form: NgForm){
     if(form.valid) {
-      console.log("Działa Z Validacja")
 
       this.newOrder.activeQueueLineDTOList = [];
 
@@ -242,32 +251,35 @@ export class CreateOrderComponent implements OnInit {
         this.newOrder.activeQueueLineDTOList?.push(GrantingAndRevoking_FUNCTION)
       } )
 
-      this.orderService.createOrder(2, this.newOrder).subscribe((res)=>
-      {
 
-        if (res.data.addOrder){
-          console.log(res.data.addOrder)
-        }
+      this.showConfirmationFormModal=true;
 
 
-      })
-
-
-
-
-
-
+    }else {
+      this.showErrorValidationModal=true;
     }
-    console.log("Działa")
+
+  }
+
+  creteOrderSecondStep(form: NgForm){
+
+    this.orderService.createOrder(2, this.newOrder).subscribe((res)=>
+    {
+
+      if (res.data.addOrder){
+        console.log(res.data.addOrder)
+        form.resetForm();
+        this.newOrder.activeQueueLineDTOList = [];
+        this.router.navigate(['home']);
+      }
 
 
+    })
 
 
 
 
   }
-
-
 
 
 

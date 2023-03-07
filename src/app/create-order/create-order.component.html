@@ -1,8 +1,7 @@
 <div class="content">
   <h1>Stwórz rozkaz</h1>
   <div class="form">
-    <div>{{newOrder|json}}</div>
-    <form #form="ngForm" (ngSubmit)="createOrder(form)" >
+    <form #form="ngForm"  >
       <div class="form-inline">
         <div class="subheader clr-align-items-center">
           <span class="img-badge">
@@ -21,29 +20,49 @@
         <div class="subtitle">
 
         </div>
-        <select
-          name="Typ rozkazu"
-          [(ngModel)]="newOrder.order_type"
-          clrSelect style="width: 100%;"
-          required
-          #order_type="ngModel">
-          <option value="0" >Normalny</option>
-          <option value="1">Specjalny</option>
-        </select>
+        <clr-select-container>
+          <select
+            clrSelect
+            name="Typ rozkazu"
+            [(ngModel)]="newOrder.order_type"
+            clrSelect style="width: 100%;"
+            required
+            #order_type="ngModel">
+            <option value="0" >Normalny</option>
+            <option value="1">Specjalny</option>
+          </select>
+          <clr-control-error>To pole jest wymagane</clr-control-error>
+
+        </clr-select-container>
+
       </div>
 
 
-      <div class="form-row">
+
+      <div class="form-row-new">
         <div class="subheader">
           Miejsce
         </div>
-          <input type="text"
-                 placeholder="Miejsce"
-                 name="Miejsce"
-                 [(ngModel)]="newOrder.place"
-                  required
-                  #place="ngModel"/>
+        <clr-input-container>
+            <input clrInput class="inputNewClr"  type="text" size="100"
+
+                   placeholder="Miejsce (To pole jest wymagane)"
+                   name="Miejsce"
+                   [(ngModel)]="newOrder.place"
+                   required
+                   #place="ngModel"/>
+          <clr-control-error></clr-control-error>
+
+
+        </clr-input-container>
+
       </div>
+
+
+
+
+
+
       <hr style="width: 80%;"/>
 
 
@@ -60,6 +79,8 @@
                                   required
                                   #quote="ngModel">
                         </textarea>
+            <clr-control-error>To pole jest wymagane</clr-control-error>
+            <clr-control-error></clr-control-error>
           </clr-textarea-container>
         </div>
       </div>
@@ -107,8 +128,8 @@
             <td *ngIf="actionQueueLineGRANTING_MERITBADGE_AND_RANKS.scoutInstructorRank!=undefined">{{actionQueueLineGRANTING_MERITBADGE_AND_RANKS.scoutInstructorRank?.name}}</td>
             <td *ngIf="actionQueueLineGRANTING_MERITBADGE_AND_RANKS.scoutRank!=undefined">{{actionQueueLineGRANTING_MERITBADGE_AND_RANKS.scoutRank?.name}}</td>
             <td >
-              <button type="button" class="btn btn-icon btn-success" aria-label="done" (click)="addToFinalOrderQueueLinesGRANTING_MERITBADGE_AND_RANKS(actionQueueLineGRANTING_MERITBADGE_AND_RANKS.id)">
-                <cds-icon shape="success-standard"></cds-icon>
+              <button type="button" class="btn-List btn-primary" aria-label="done" (click)="addToFinalOrderQueueLinesGRANTING_MERITBADGE_AND_RANKS(actionQueueLineGRANTING_MERITBADGE_AND_RANKS.id)">
+                <cds-icon shape="plus-circle"></cds-icon>
               </button>
             </td>
 
@@ -136,8 +157,8 @@
             <td *ngIf="finalGRANTING_MERITBADGE_AND_RANKS.scoutInstructorRank!=undefined">{{finalGRANTING_MERITBADGE_AND_RANKS.scoutInstructorRank?.name}}</td>
             <td *ngIf="finalGRANTING_MERITBADGE_AND_RANKS.scoutRank!=undefined">{{finalGRANTING_MERITBADGE_AND_RANKS.scoutRank?.name}}</td>
             <td >
-              <button type="button" class="btn btn-icon btn-success" aria-label="done" (click)="removeFromFinalOrderQueueLinesGRANTING_MERITBADGE_AND_RANKS(finalGRANTING_MERITBADGE_AND_RANKS.id)">
-                <cds-icon shape="success-standard"></cds-icon>
+              <button type="button" class="btn-List" aria-label="done" (click)="removeFromFinalOrderQueueLinesGRANTING_MERITBADGE_AND_RANKS(finalGRANTING_MERITBADGE_AND_RANKS.id)">
+                <cds-icon shape="x"></cds-icon>
               </button>
             </td>
           </tr>
@@ -175,9 +196,12 @@
           <tbody>
           <tr *ngFor="let actionQueueLineCREATE_ORGANIZATION of getActionQueueLineCREATE_ORGANIZATION();">
             <td>{{actionQueueLineCREATE_ORGANIZATION.organization?.organizationType+" "+actionQueueLineCREATE_ORGANIZATION.organization?.name}}</td>
-            <button type="button" class="btn btn-icon btn-success" aria-label="done" (click)="addToFinalOrderQueueLinesCREATE_ORGANIZATION(actionQueueLineCREATE_ORGANIZATION.id)">
-              <cds-icon shape="success-standard"></cds-icon>
-            </button>
+            <td>
+              <button type="button" class="btn-List" aria-label="done" (click)="addToFinalOrderQueueLinesCREATE_ORGANIZATION(actionQueueLineCREATE_ORGANIZATION.id)">
+                <cds-icon shape="plus-circle"></cds-icon>
+              </button>
+            </td>
+
           </tr>
           </tbody>
         </table>
@@ -195,8 +219,8 @@
           <tr *ngFor="let finalCREATE_ORGANIZATION of getFinalOrderQueueLinesCREATE_ORGANIZATION();">
             <td>{{finalCREATE_ORGANIZATION.organization?.organizationType+" "+finalCREATE_ORGANIZATION.organization?.name}}</td>
             <td >
-              <button type="button" class="btn btn-icon btn-success" aria-label="done" (click)="removeFromFinalOrderQueueLinesCREATE_ORGANIZATION(finalCREATE_ORGANIZATION.id)">
-                <cds-icon shape="success-standard"></cds-icon>
+              <button type="button" class="btn-List" aria-label="done" (click)="removeFromFinalOrderQueueLinesCREATE_ORGANIZATION(finalCREATE_ORGANIZATION.id)">
+                <cds-icon shape="x"></cds-icon>
               </button>
             </td>
           </tr>
@@ -240,9 +264,12 @@
             <td>{{actionQueueLineGrantingAndRevoking_FUNCTION.role?.name}}</td>
             <td *ngIf="actionQueueLineGrantingAndRevoking_FUNCTION.action_type=='GRANTING_FUNCTION'">Mianowanie</td>
             <td *ngIf="actionQueueLineGrantingAndRevoking_FUNCTION.action_type=='REVOKING_FUNCTION'">Zwolnienie</td>
-            <button type="button" class="btn btn-icon btn-success" aria-label="done" (click)="addToFinalOrderQueueLinesGrantingAndRevoking_FUNCTION(actionQueueLineGrantingAndRevoking_FUNCTION.id)">
-              <cds-icon shape="success-standard"></cds-icon>
-            </button>
+            <td>
+              <button type="button" class="btn-List" aria-label="done" (click)="addToFinalOrderQueueLinesGrantingAndRevoking_FUNCTION(actionQueueLineGrantingAndRevoking_FUNCTION.id)">
+                <cds-icon shape="plus-circle"></cds-icon>
+              </button>
+            </td>
+
           </tr>
           </tbody>
         </table>
@@ -264,12 +291,16 @@
             <td>{{finalGrantingAndRevoking_FUNCTION.role?.name}}</td>
             <td *ngIf="finalGrantingAndRevoking_FUNCTION.action_type=='GRANTING_FUNCTION'">Mianowanie</td>
             <td *ngIf="finalGrantingAndRevoking_FUNCTION.action_type=='REVOKING_FUNCTION'">Zwolnienie</td>
-            <button type="button" class="btn btn-icon btn-success" aria-label="done" (click)="removeFromFinalOrderQueueLinesGrantingAndRevoking_FUNCTION(finalGrantingAndRevoking_FUNCTION.id)">
-              <cds-icon shape="success-standard"></cds-icon>
-            </button>
+            <td>
+              <button type="button" class="btn-List" aria-label="done" (click)="removeFromFinalOrderQueueLinesGrantingAndRevoking_FUNCTION(finalGrantingAndRevoking_FUNCTION.id)">
+                <cds-icon shape="x"></cds-icon>
+              </button>
+            </td>
+
           </tr>
           </tbody>
         </table>
+
 
         <div class="subtitle">
           Text dodatkowy
@@ -305,34 +336,24 @@
       <hr style="width: 80%;"/>
 
       <div class="form-row">
-        <button class="btn order" (click)="viewOrder()">Zobacz podgląd rozkazu pdf</button>
-
-
-          <button  type="submit" class="btn-New" > Utwórz próbę</button>
-
-        <div class="modal">
-          <div class="modal-dialog" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button aria-label="Close" class="close" type="button">
-                  <clr-icon aria-hidden="true" shape="close"></clr-icon>
-                </button>
-                <h3 class="modal-title">I have a nice title</h3>
-              </div>
-              <div class="modal-body">
-                <p>But not much to say...</p>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-outline" type="button">Cancel</button>
-                <button class="btn btn-primary" type="button">Ok</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-backdrop" aria-hidden="true"></div>
-
-
+        <button class="btn order" (click)="viewOrder(form)">Zobacz podgląd rozkazu pdf</button>
+          <button class="btn-New" (click)="createOrderFirstStep(form)"> Utwórz próbę</button>
       </div>
+      <clr-modal [(clrModalOpen)]="showConfirmationFormModal">
+        <h3 class="modal-title">Potwierdz tworznie rozkazu</h3>
+        <div class="modal-body">Po potwierdzeniu rozkazu nie będzie możliwości zmiany jego danych</div>
+        <div class="modal-footer">
+          <button type="button" class="btn" (click)="showConfirmationFormModal = false">Anuluj</button>
+          <button type="button" class="btn" (click)="showConfirmationFormModal = false;creteOrderSecondStep(form)">Potwierdz</button>
+        </div>
+      </clr-modal>
+      <clr-modal [(clrModalOpen)]="showErrorValidationModal">
+        <h3 class="modal-title">Błąd</h3>
+        <div class="modal-body">Nie wszystkie dane w formularzu zostały wypełnione</div>
+        <div class="modal-footer">
+          <button type="button" class="btn" (click)="showErrorValidationModal = false">Zamknij</button>
+        </div>
+      </clr-modal>
     </form>
   </div>
 </div>
