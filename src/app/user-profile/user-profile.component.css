@@ -126,3 +126,6 @@ clr-progress-bar{
 .filled{
   background-color: black;
 }
+.datagrid-row-detail {
+  display: block;
+}
