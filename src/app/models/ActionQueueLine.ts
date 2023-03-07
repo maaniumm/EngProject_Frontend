@@ -13,9 +13,8 @@ export class ActionQueueLine {
     public archieved?: boolean,
     public appUserDetailsDTO?: AppUserDetails,
     public organization?: Organization,
-    public developerMessage?: String,
-    public meridBadges?:MeritBadge,
-    public scoutRanks?:ScoutRank,
+    public meritBadge?:MeritBadge,
+    public scoutRank?:ScoutRank,
     public scoutInstructorRank?:ScoutInstructorRank,
     public role?:Role) {}
 }
