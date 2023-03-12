@@ -1,4 +1,4 @@
-.wrapper{
+.form{
   background-color: white;
   padding: 1rem;
   border-radius: 5px;
@@ -128,46 +128,25 @@ form{
   color: #cc4444;
   margin-top: 10px;
 }
-
-.cards-container{
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.card{
-  width: 10rem;
-  min-height: 12rem;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.card-text{
+p{
   text-align: center;
-  font-weight: bold;
+}
+::ng-deep .clr-form-control {
+  width: 80% !important;
 }
 
-.card-img{
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: end;
-  align-items: start;
+:host ::ng-deep .clr-control-container {
+  width: 100% !important;
 }
 
-hr{
-  width: 80%;
-  border: 1px solid hsl(48, 95%, 48%);
+:host ::ng-deep .clr-select-wrapper {
+  width: 100% !important;
 }
 
-.btn{
+.form-row clr-select-container{
   width: 100%;
-  margin: 0;
-  background-color: hsl(48, 95%, 48%);
-  border: 1px solid hsl(48, 95%, 48%);
-  color: black;
-  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  background-color: whitesmoke;
+  padding: .3rem .3rem .3rem 1rem;
 }
