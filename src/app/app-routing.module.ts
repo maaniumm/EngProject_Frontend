@@ -22,6 +22,8 @@ import {ManageSuborgComponent} from './manage-suborg/manage-suborg.component';
 import {ManageOrgCommanderComponent} from './manage-org-commander/manage-org-commander.component';
 import {ManageScoutProfileComponent} from './manage-scout-profile/manage-scout-profile.component';
 import {ManageAdminRightsComponent} from './manage-admin-rights/manage-admin-rights.component';
+import {OrderDashboardComponent} from './order-dashboard/order-dashboard.component';
+import {ManageOrgMembersComponent} from './manage-org-members/manage-org-members.component'
 
 const routes: Routes = [
   {path: 'forgetpassword', component:ResetPasswordComponent},
@@ -44,6 +46,8 @@ const routes: Routes = [
   {path: 'manageorgcommander' ,component:ManageOrgCommanderComponent},
   {path: 'managescoutprofile' ,component:ManageScoutProfileComponent},
   {path: 'manageadminrights' ,component:ManageAdminRightsComponent},
+  {path: 'orderdashboard' ,component:OrderDashboardComponent},
+  {path: 'manageorgmembers' ,component:ManageOrgMembersComponent},
   {path: '', canActivate:[AuthenticationGuard], children: [
   {path: '' ,component:HomeComponent}]}
 ];
