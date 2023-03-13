@@ -39,14 +39,6 @@ form{
   padding: .3rem .3rem .3rem 1rem;
 }
 
-.form-row clr-select-container{
-  width: 100%;
-  border-radius: 5px;
-  border: none;
-  background-color: whitesmoke;
-  padding: .3rem .3rem .3rem 1rem;
-}
-
 .form-row img{
   width: 3rem;
   border-radius: 50%;
@@ -66,9 +58,16 @@ form{
 .form-error{
   color: #cc4444;
 }
+.form-row clr-select-container{
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background-color: whitesmoke;
+  padding: .3rem .3rem .3rem 1rem;
+}
 
 ::ng-deep .clr-form-control {
-  width: 100% !important;
+  width: 80% !important;
 }
 
 :host ::ng-deep .clr-control-container {
@@ -77,7 +76,4 @@ form{
 
 :host ::ng-deep .clr-select-wrapper {
   width: 100% !important;
-}
-p{
-  text-align: center;
 }

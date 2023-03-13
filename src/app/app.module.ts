@@ -31,6 +31,14 @@ import { CreateScoutattemptComponent } from './create-scoutattempt/create-scouta
 import { EditOrgComponent } from './edit-org/edit-org.component';
 import { BadgesrankDashboardComponent } from './badgesrank-dashboard/badgesrank-dashboard.component';
 import {SecurePipe} from "./SecurePipe";
+import { ManageOrgComponent } from './manage-org/manage-org.component';
+import { ManageSuborgComponent } from './manage-suborg/manage-suborg.component';
+import { ManageOrgCommanderComponent } from './manage-org-commander/manage-org-commander.component';
+import { ManageScoutProfileComponent } from './manage-scout-profile/manage-scout-profile.component';
+import { ManageAdminRightsComponent } from './manage-admin-rights/manage-admin-rights.component';
+import { OrderDashboardComponent } from './order-dashboard/order-dashboard.component';
+import { ManageOrgMembersComponent } from './manage-org-members/manage-org-members.component';
+
 
 ClarityIcons.addIcons(noteIcon, userIcon, tasksIcon, cogIcon, infoCircleIcon, bullseyeIcon, timesCircleIcon, flameIcon, plusIcon, loginIcon,);
 ClarityIcons.addIcons(['plus-circle','<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>']);
@@ -58,7 +66,14 @@ export function tokenGetter() {
     CreateScoutattemptComponent,
     EditOrgComponent,
     BadgesrankDashboardComponent,
-    SecurePipe
+    SecurePipe,
+    ManageOrgComponent,
+    ManageSuborgComponent,
+    ManageOrgCommanderComponent,
+    ManageScoutProfileComponent,
+    ManageAdminRightsComponent,
+    OrderDashboardComponent,
+    ManageOrgMembersComponent
   ],
   imports: [
     BrowserModule,

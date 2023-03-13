@@ -8,6 +8,7 @@ import {AppliedAttempt} from "../models/applied-attempt.model";
 import {ClrDatagridSortOrder} from "@clr/angular";
 import {CreatedAttempt} from "../models/created-attempt.model";
 
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -21,7 +22,11 @@ export class UserProfileComponent implements OnInit {
   ) { }
   userDetails?: UserProfile;
   appliedAttempt?: AppliedAttempt;
+  appliedAttemptCount?: number;
+
   createdAttempt?: CreatedAttempt;
+  createdAttemptCount?: number;
+
   scoutInstructorColor!: string | null;
   enviormentUrl!: string;
   descSort = ClrDatagridSortOrder.DESC;
@@ -62,6 +67,9 @@ export class UserProfileComponent implements OnInit {
     this.userProfileService.getCreatedAttempt().subscribe(res => {
       if (res) {
         this.createdAttempt = res;
+        for (let attem in this.createdAttempt){
+          console.log(attem);
+        }
         console.log(res);
       } else {
         alert ("Failed to query list")

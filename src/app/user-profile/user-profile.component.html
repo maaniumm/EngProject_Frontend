@@ -77,30 +77,31 @@
         <clr-dg-column>Imie i nazwisko probanta</clr-dg-column>
         <clr-dg-column>Organizacja</clr-dg-column>
 
-        <clr-dg-row  *clrDgItems="let attempt of createdAttempt.data.getAllCreatedAttempt">
-          <-- Cells declarations -->
-          <clr-dg-cell>{{attempt.id}}</clr-dg-cell>
-          <clr-dg-cell>{{attempt.name}}</clr-dg-cell>
-          <clr-dg-cell>{{attempt.TYPE}}</clr-dg-cell>
-          <clr-dg-cell>{{attempt.applicantId.name}} {{attempt.applicantId.surname}}</clr-dg-cell>
-          <clr-dg-cell>{{attempt.organization.name}}</clr-dg-cell>
+        <ng-container *clrDgItems="let attempt of createdAttempt.data.getAllCreatedAttempt">
+          <clr-dg-row *ngIf="attempt.STATUS=='OPEN'">
+            <-- Cells declarations -->
+            <clr-dg-cell>{{attempt.id}}</clr-dg-cell>
+            <clr-dg-cell>{{attempt.name}}</clr-dg-cell>
+            <clr-dg-cell>{{attempt.TYPE}}</clr-dg-cell>
+            <clr-dg-cell>{{attempt.applicantId.name}} {{attempt.applicantId.surname}}</clr-dg-cell>
+            <clr-dg-cell>{{attempt.organization.name}}</clr-dg-cell>
 
-          <clr-dg-row-detail class="datagrid-row-detail" *clrIfExpanded >
-            <div *ngIf="attempt.meritBadgeId">
-              <span class="column-subheader">Zdobywana sprawność: {{attempt.meritBadgeId.name}}</span>
-            </div>
-            <div *ngIf="attempt.scoutRankId">
-              <span class="column-subheader">Zdobywany stopień harcerski: {{attempt.scoutRankId.name}}</span>
-            </div>
-            <div *ngIf="attempt.scoutInstructorRankId">
-              <span class="column-subheader">Zdobywany stopień instruktorski: {{attempt.scoutInstructorRankId.name}}</span>
-            </div>
-            <ol>
-              <li *ngFor="let task of attempt.attemptTasks">{{task.description}}</li>
-            </ol>
-          </clr-dg-row-detail>
-        </clr-dg-row>
-
+            <clr-dg-row-detail class="datagrid-row-detail" *clrIfExpanded >
+              <div *ngIf="attempt.meritBadgeId">
+                <span class="column-subheader">Zdobywana sprawność: {{attempt.meritBadgeId.name}}</span>
+              </div>
+              <div *ngIf="attempt.scoutRankId">
+                <span class="column-subheader">Zdobywany stopień harcerski: {{attempt.scoutRankId.name}}</span>
+              </div>
+              <div *ngIf="attempt.scoutInstructorRankId">
+                <span class="column-subheader">Zdobywany stopień instruktorski: {{attempt.scoutInstructorRankId.name}}</span>
+              </div>
+              <ol>
+                <li *ngFor="let task of attempt.attemptTasks">{{task.description}}</li>
+              </ol>
+            </clr-dg-row-detail>
+          </clr-dg-row>
+        </ng-container>
         <clr-dg-footer> Liczba prób:  {{createdAttempt.data.getAllCreatedAttempt.length}}</clr-dg-footer>
       </clr-datagrid>
 
@@ -112,14 +113,17 @@
         <clr-dg-column [clrDgField]="'TYPE'" [clrDgSortOrder]="descSort" >Typ próby</clr-dg-column>
         <clr-dg-column>Imie i nazwisko opiekuna</clr-dg-column>
         <clr-dg-column>Organizacja</clr-dg-column>
-
-        <clr-dg-row  *clrDgItems="let attempt of appliedAttempt.data.getMyAllAppliedAttempt">
+        <clr-dg-column [clrDgField]="'STATUS'" [clrDgSortOrder]="descSort"  >Status</clr-dg-column>
+        <ng-container *clrDgItems="let attempt of appliedAttempt.data.getMyAllAppliedAttempt">
+        <clr-dg-row *ngIf="attempt?.STATUS=='OPEN'">
           <-- Cells declarations -->
           <clr-dg-cell >{{attempt.id}}</clr-dg-cell>
-          <clr-dg-cell>{{attempt.name}}</clr-dg-cell>
+          <clr-dg-cell >{{attempt.name}}</clr-dg-cell>
           <clr-dg-cell>{{attempt.TYPE}}</clr-dg-cell>
           <clr-dg-cell>{{attempt.creatorId.name}} {{attempt.creatorId.surname}}</clr-dg-cell>
           <clr-dg-cell>{{attempt.organization.name}}</clr-dg-cell>
+          <clr-dg-cell>{{attempt.STATUS}}</clr-dg-cell>
+
 
           <clr-dg-row-detail *clrIfExpanded  class="datagrid-row-detail">
             <div *ngIf="attempt.meritBadgeId">
@@ -136,7 +140,7 @@
             </ol>
           </clr-dg-row-detail>
         </clr-dg-row>
-
+        </ng-container>
         <clr-dg-footer> Liczba prób:  {{appliedAttempt.data.getMyAllAppliedAttempt.length}}</clr-dg-footer>
       </clr-datagrid>
 
