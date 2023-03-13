@@ -68,7 +68,7 @@ form{
 }
 
 ::ng-deep .clr-form-control {
-  width: 100% !important;
+  width: 80% !important;
 }
 
 :host ::ng-deep .clr-control-container {
@@ -78,6 +78,7 @@ form{
 :host ::ng-deep .clr-select-wrapper {
   width: 100% !important;
 }
+
 p{
   text-align: center;
 }
