@@ -7,11 +7,9 @@
       </div>
       <div class="form-row">
         <select clrSelect style="width: 100%;">
-          <option value="0">Stopień Instruktorski</option>
-          <option value="1">Harcmistrz</option>
-          <option value="2">Podharcmistrz</option>
-          <option value="3">Instruktor</option>
-          <option value="4">Brak stopnia</option>
+
+          <option *ngFor="let scoutInstructorRankAvailable of getAllScoutInstructorRankAvailableForAppUserAttempt();" >{{scoutInstructorRankAvailable.name}}</option>
+
         </select>
       </div>
       <div class="form-row">

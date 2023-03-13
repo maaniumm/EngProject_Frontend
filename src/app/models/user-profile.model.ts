@@ -20,4 +20,5 @@ export interface UserProfilDetails {
   meritBadges: any[]
   scoutRank: any
   scoutInstructorRank: any
+  photo: any
 }

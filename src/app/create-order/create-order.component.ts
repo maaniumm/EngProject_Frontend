@@ -59,7 +59,6 @@ export class CreateOrderComponent implements OnInit {
       console.log(this.actionQueueLinesGrantingAndRevoking_FUNCTION)
       console.log("rfunc")
 
-
     });
 
 
