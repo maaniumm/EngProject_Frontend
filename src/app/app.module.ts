@@ -38,6 +38,7 @@ import { ManageScoutProfileComponent } from './manage-scout-profile/manage-scout
 import { ManageAdminRightsComponent } from './manage-admin-rights/manage-admin-rights.component';
 import { OrderDashboardComponent } from './order-dashboard/order-dashboard.component';
 import { ManageOrgMembersComponent } from './manage-org-members/manage-org-members.component';
+import { BadgesrankHomeComponent } from './badgesrank-home/badgesrank-home.component';
 
 
 ClarityIcons.addIcons(noteIcon, userIcon, tasksIcon, cogIcon, infoCircleIcon, bullseyeIcon, timesCircleIcon, flameIcon, plusIcon, loginIcon,);
@@ -73,7 +74,8 @@ export function tokenGetter() {
     ManageScoutProfileComponent,
     ManageAdminRightsComponent,
     OrderDashboardComponent,
-    ManageOrgMembersComponent
+    ManageOrgMembersComponent,
+    BadgesrankHomeComponent
   ],
   imports: [
     BrowserModule,
