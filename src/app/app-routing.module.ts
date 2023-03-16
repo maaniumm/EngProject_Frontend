@@ -23,7 +23,8 @@ import {ManageOrgCommanderComponent} from './manage-org-commander/manage-org-com
 import {ManageScoutProfileComponent} from './manage-scout-profile/manage-scout-profile.component';
 import {ManageAdminRightsComponent} from './manage-admin-rights/manage-admin-rights.component';
 import {OrderDashboardComponent} from './order-dashboard/order-dashboard.component';
-import {ManageOrgMembersComponent} from './manage-org-members/manage-org-members.component'
+import {ManageOrgMembersComponent} from './manage-org-members/manage-org-members.component';
+import {BadgesrankHomeComponent} from './badgesrank-home/badgesrank-home.component';
 
 const routes: Routes = [
   {path: 'forgetpassword', component:ResetPasswordComponent},
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path: 'manageadminrights' ,component:ManageAdminRightsComponent},
   {path: 'orderdashboard' ,component:OrderDashboardComponent},
   {path: 'manageorgmembers' ,component:ManageOrgMembersComponent},
+  {path: 'badgesrankhome' ,component:BadgesrankHomeComponent},
   {path: '', canActivate:[AuthenticationGuard], children: [
   {path: '' ,component:HomeComponent}]}
 ];
