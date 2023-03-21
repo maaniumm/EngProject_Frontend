@@ -22,11 +22,13 @@ export class UserProfileService {
   getCreatedAttempt(): Observable<CreatedAttempt> {
     return this.http.get<CreatedAttempt>('/api/v1/attempt/getAllMyCreatedAttempt');
   }
+
   putUserProfile(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('photo', file);
 
     return this.http.put('http://localhost:8080/api/v1/appUser/changeMyUserProfilePhoto',formData);
   }
+
 
 }

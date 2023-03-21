@@ -2,24 +2,43 @@
   <h1>Zarządzaj komendatem jednostki</h1>
 
   <div class="form">
-    <h3>Nazwa jednostki</h3>
+    <h3>{{getFullOrganizationName(mainOrganization)}}</h3>
     <form>
       <p>Wybierz komendanta jednostki</p>
 
-      <div class="form-row">
-        <select clrSelect style="width: 100%;">
-          <option value="0">Jan Dzban</option>
-          <option value="1">Marian Majeranek</option>
-        </select>
-      </div>
+
 
       <div class="form-row">
-        <button class="btn btn-primary">Nadaj komendanta</button>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Imie i Nazwisko</th>
+            <th>Stopień Harcerski</th>
+            <th>Adres email</th>
+            <th>Funkcja</th>
+            <th>Miano</th>
+            <th>Akcja</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let userOrganization of getorganizationUsers();">
+            <td>{{userOrganization.name+" "+userOrganization.surname}}</td>
+            <td>{{userOrganization.scoutRankName}}</td>
+            <td>{{userOrganization.email}}</td>
+            <td>{{userOrganization.organizationFunction}}</td>
+            <td>{{userOrganization.nickName}}</td>
+            <td>
+              <button class="btn btn-primary" *ngIf="!checkIfUserIsACommander(userOrganization)" (click)="addOwnerToOrganization(userOrganization)">Nadaj Uprawienia</button>
+              <button class="btn btn-primary" *ngIf="checkIfUserIsACommander(userOrganization)" (click)="removeOwnerToOrganization(userOrganization)">Odbierz Uprawnienia</button>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
       </div>
 
-      <div class="form-row">
-        <span class="form-error">Źle uzupełniłeś dane!</span>
-      </div>
+
+
 
     </form>
 

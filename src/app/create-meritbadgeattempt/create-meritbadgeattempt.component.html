@@ -1,32 +1,47 @@
 <div class="content">
   <h1>Stwórz próbę na Sprawność</h1>
   <div class="form">
-    <form>
-      <div class="form-row">
-        <input type="text" placeholder="Nazwa próby"/>
+    <form #form="ngForm">
+      <div class="form-row-new">
+        <clr-input-container>
+          <input
+            clrInput
+            class="inputNewClr"
+            type="text"
+            placeholder="Nazwa próby"
+            name="Nazwa próby"
+            [(ngModel)]="newAttempt.name"
+            required
+            size="100"
+          />
+          <clr-control-error></clr-control-error>
+        </clr-input-container>
       </div>
       <div class="form-row">
-        <select clrSelect style="width: 100%;">
-          <option value="0">Kuchcik</option>
-          <option value="1">Kuchmistrz</option>
-          <option value="2">Szef kuchni</option>
+        <select clrSelect
+                style="width: 100%;"
+                [(ngModel)]="newAttempt.meritBadgeId"
+                name="Sprawność"
+        >
+
+          <option *ngFor="let meritBadgeAvailable of getAllMeritBadgesAvailableAvailableForAppUserAttempt();"
+                  [ngValue]="meritBadgeAvailable">
+            {{meritBadgeAvailable.name}}
+          </option>
         </select>
       </div>
       <div class="form-row">
-        <div class="header">
-          <div class="header-text">
-            Wymagania na stopnie w pdf
-          </div>
-        </div>
+            <button class="btn" (click)="openPDF()">Wymagania na stopnie w pdf</button>
       </div>
       <div class="form-row">
         <div class="text-area-panel">
           <clr-textarea-container>
-                        <textarea clrTextarea style="width: 100% !important; height: 140px !important;">Textarea: Wpisujesz treść zadania i dodajesz do listy poniżej, która jest wyświetlana w formie tabelki i następnie jak się utworzy próba wysyłana jako jedna zmienna. Z listy poniżej można usunąć zadanie bo jest to na froncie
-                        </textarea>
+                        <textarea #areaTask
+                          clrTextarea style="width: 100% !important; height: 140px !important;"
+                        placeholder="Textarea: Wpisujesz treść zadania i dodajesz do listy poniżej, która jest wyświetlana w formie tabelki i następnie jak się utworzy próba wysyłana jako jedna zmienna. Z listy poniżej można usunąć zadanie bo jest to na froncie"></textarea>
           </clr-textarea-container>
           <div class="form-row">
-            <button class="btn">Dodaj zadanie</button>
+            <button class="btn" (click)="addTask(areaTask.value)">Dodaj zadanie</button>
           </div>
         </div>
       </div>
@@ -39,35 +54,41 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-            <td><cds-icon shape="times-circle"></cds-icon></td>
-          </tr>
-          <tr>
-            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-            <td><cds-icon shape="times-circle"></cds-icon></td>
-          </tr>
-          <tr>
-            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-            <td><cds-icon shape="times-circle"></cds-icon></td>
-          </tr>
-          <tr>
-            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-            <td><cds-icon shape="times-circle"></cds-icon></td>
+          <tr *ngFor="let task of getAttemptTasks();let i = index" [attr.data-index]="i" >
+            <td >{{task.description}}</td>
+            <td>
+              <button type="button" class="btn-List" aria-label="done" (click)="removeAttemptTask(task)">
+                <cds-icon shape="x"></cds-icon>
+              </button></td>
           </tr>
           </tbody>
         </table>
       </div>
       <div class="form-row">
-        <div class="header">
-          <div class="header-text">
-            Utwórz próbę
-          </div>
-        </div>
-        <span class="form-error">
-                    Źle uzupełniłeś dane
-                </span>
+        <button  class="btn-New" (click)="submitAttempt(form)">Utwórz próbę</button>
       </div>
+
+      <clr-modal [(clrModalOpen)]="showErrorValidationModalName">
+        <h3 class="modal-title">Błąd</h3>
+        <div class="modal-body">Brak nazwy próby</div>
+        <div class="modal-footer">
+          <button type="button" class="btn" (click)="showErrorValidationModalName = false">Zamknij</button>
+        </div>
+      </clr-modal>
+      <clr-modal [(clrModalOpen)]="showErrorValidationModalEmptyTaskList">
+        <h3 class="modal-title">Błąd</h3>
+        <div class="modal-body">Twoja próba nie posiada żadnych zadań</div>
+        <div class="modal-footer">
+          <button type="button" class="btn" (click)="showErrorValidationModalEmptyTaskList = false">Zamknij</button>
+        </div>
+      </clr-modal>
+
+
+
+
+
+
+
     </form>
   </div>
 </div>

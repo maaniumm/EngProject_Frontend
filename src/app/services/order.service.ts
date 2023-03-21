@@ -15,22 +15,6 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
-
-
-  getAllActiveLines(organizationId : number): Observable<CustomResponse> {
-
-    const params = new HttpParams().append('idOrganization', organizationId);
-
-    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/allActiveLines`,{params : params});
-  }
-
-  getOrganization(organizationId : number): Observable<CustomResponse> {
-
-    const params = new HttpParams().append('idOrganization', organizationId);
-
-    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/getOrganization`,{params : params});
-  }
-
   postViewOrder(organizationId : number, order:Order): Observable<any> {
     const params = new HttpParams().append('organizationId', organizationId);
 
@@ -40,6 +24,24 @@ export class OrderService {
     const params = new HttpParams().append('organizationId', organizationId);
     return this.http.post<CustomResponse>(`http://localhost:8080/api/v1/Order/addOrder`,order,{params : params});
   }
+
+
+  getRulesPdf(orderId: number): Observable<any> {
+    const params = new HttpParams().append('orderId', orderId);
+    return this.http.get(`http://localhost:8080/api/v1/Order/pdf/generate`,{observe:'response',responseType:'blob',params : params});
+  }
+
+
+  getOrganizationOrders(organizationId : number): Observable<CustomResponse>{
+
+    const params = new HttpParams().append('organizationId', organizationId );
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/Order/getOrganizationOrders',{params:params});
+
+  }
+
+
+
+
 
 
 

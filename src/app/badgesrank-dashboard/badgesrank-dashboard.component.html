@@ -14,17 +14,11 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>Jan Dzban</td>
-        <td><button class="btn">Próba na sprawnośc</button></td>
-        <td><button class="btn">Próba na stopień</button></td>
-        <td><button class="btn">Próba na stopień insturktorski</button></td>
-      </tr>
-      <tr>
-        <td>Marian Majeranek</td>
-        <td><button class="btn">Próba na sprawnośc</button></td>
-        <td><button class="btn">Próba na stopień</button></td>
-        <td><button class="btn">Próba na stopień insturktorski</button></td>
+      <tr *ngFor="let user of getAllOrganizationUsers();" >
+        <td>{{user.name+" "+user.surname}}</td>
+        <td><button class="btn"(click)="gotocreateMeritbadgeattempt(user.email)">Próba na sprawnośc</button></td>
+        <td><button class="btn" [disabled]="checkIfYouCanStartScoutRankAttempt(user)"(click)="gotoCreateScoutAtempt(user.email)">Próba na stopień</button></td>
+        <td><button class="btn" [disabled]="checkIfYouCanStartScoutRankInstructorAttempt(user)" (click)="gotoCreateinsturctorattempt(user.email)">Próba na stopień insturktorski</button></td>
       </tr>
       </tbody>
     </table>
