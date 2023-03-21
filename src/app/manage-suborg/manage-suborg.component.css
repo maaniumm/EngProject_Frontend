@@ -130,6 +130,7 @@ clr-progress-bar{
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 
@@ -157,3 +158,4 @@ clr-progress-bar{
 h1{
   width: 80%;
 }
+

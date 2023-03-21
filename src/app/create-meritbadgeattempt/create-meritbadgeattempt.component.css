@@ -51,14 +51,6 @@ form{
   padding: .1rem;
 }
 
-.form-row button{
-  width: 100%;
-  margin: 0;
-  background-color: hsl(48, 95%, 48%);
-  border: 1px solid hsl(48, 95%, 48%);
-  color: black;
-  font-weight: bold;
-}
 
 .form-error{
   color: #cc4444;
@@ -112,9 +104,27 @@ form{
   width: 80%;
 }
 
-.form button {
-  width: 50%;
-  margin-top: 20px;
+
+
+.form-error{
+  color: #cc4444;
+  margin-top: 10px;
+}
+.form .btn {
+  width: 40%;
+  margin-top: 25px;
+  background-color: hsl(48, 95%, 48%);
+  border: 1px solid hsl(48, 95%, 48%);
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.btn-New {
+  width: 70%;
+  height: 50px;
+  margin-top: 25px;
   background-color: hsl(48, 95%, 48%);
   border: 1px solid hsl(48, 95%, 48%);
   color: black;
@@ -122,9 +132,67 @@ form{
   font-size: 16px;
   text-transform: none;
   letter-spacing: normal;
+  border-radius: 4px;
+}
+.btn-New:hover {background-color: hsl(48, 95%, 45%)}
+
+.btn-New:active {
+  background-color: hsl(48, 95%, 45%);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
-.form-error{
-  color: #cc4444;
-  margin-top: 10px;
+
+.btn-List {
+
+  display:inline-block;
+  width:55px;
+  height:34px;
+
+  background-color: hsl(48, 95%, 48%);
+  border: 1px solid hsl(48, 95%, 48%);
+  border-radius: 4px;
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.btn-List:hover {background-color: hsl(48, 95%, 45%)}
+
+.btn-List:active {
+  background-color: hsl(48, 95%, 45%);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.form .btn:hover {background-color: hsl(48, 95%, 45%)}
+
+.form .btn:active {
+  background-color: hsl(48, 95%, 45%);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+td{
+  height: 100%;
+  vertical-align: middle;
+}
+.form-row-new  input{
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background-color: whitesmoke;
+  padding: .9rem 1rem .9rem 1rem;
+  margin-top: 15px;
+  margin-bottom: 100px;
+}
+.form-row-new {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }

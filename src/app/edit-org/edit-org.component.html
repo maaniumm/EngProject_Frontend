@@ -6,29 +6,62 @@
     <form>
 
       <div class="form-row">
-        <input type="text" placeholder="Nazwa"/>
+        <input type="text" placeholder="Nazwa" name="organizationName" [(ngModel)]="organization.name" />
+
       </div>
 
       <div class="form-row">
-        <img alt="user" src="assets/images/info.svg">
+        <button class="btn btn-primary" (click)="submitChangeName()">Zmień nazwę</button>
       </div>
+
+      <div  class="form-row">
+        <img *ngIf="!url" style="max-height: 200px; max-width: 200px;"  alt="user"
+             [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(organization.image===null?'alert-circle.svg':organization.image) | secure | async"/>
+        <img *ngIf="url" style="max-height: 200px; max-width: 200px;"  alt="user"
+             [attr.src]="url"/>
+      </div>
+
+
+
+
+
 
       <div class="form-row">
-        <input type="text" placeholder="logo_organizacji.jpg"/>
+        <button type="button" class="btn"  (click)="fileInput.click()">
+          Wybierz zdjęcie
+          <cds-icon shape="img"></cds-icon>
+          </button>
+        <input
+          #fileInput
+          hidden
+          type="file"
+          placeholder="Upload file"
+          required
+          (change)="changePhoto($event)"
+        >
+        <label>{{fileInput.value}}</label>
+
+
       </div>
+
+      <div class="alert alert-danger" *ngIf="message">
+        <div class="alert-items">
+          <div class="alert-item static" role="alert">
+            <div class="alert-icon-wrapper">
+              <cds-icon class="alert-icon" shape="exclamation-circle"></cds-icon>
+            </div>
+            <span class="alert-text">
+                {{message}}
+            </span>
+          </div>
+        </div>>
+      </div>
+
 
       <div class="form-row">
-        <button class="btn btn-primary">Wybierz zdjęcie</button>
+        <button class="btn btn-primary" (click)="submitChangePhoto()">Zapisz Zmianę</button>
       </div>
 
-
-      <div class="form-row">
-        <button class="btn btn-primary">Zapisz</button>
-      </div>
-
-      <div class="form-row">
-        <span class="form-error">Źle uzupełniłeś dane!</span>
-      </div>
 
     </form>
     <hr>

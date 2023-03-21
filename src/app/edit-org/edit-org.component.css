@@ -48,7 +48,7 @@ form{
 }
 
 .form-row img{
-  width: 3rem;
+  width: 20rem;
   border-radius: 50%;
   border: 2px solid hsl(48, 95%, 48%);
   padding: .1rem;
@@ -77,4 +77,12 @@ form{
 
 :host ::ng-deep .clr-select-wrapper {
   width: 100% !important;
+}
+.button-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }

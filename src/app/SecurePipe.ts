@@ -14,9 +14,7 @@ export class SecurePipe implements PipeTransform {
     if (src.indexOf(';base64,') > -1) {
       return src;
     }
-    const token = '[bearer token]';
-    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
-    const imageBlob  = await this.http.get(src, { headers, responseType: 'blob' }).toPromise() as Blob;
+    const imageBlob  = await this.http.get(src, { responseType: 'blob' }).toPromise() as Blob;
     const reader = new FileReader();
     return new Promise((resolve, reject) => {
       reader.onloadend = () => resolve(reader.result as string);

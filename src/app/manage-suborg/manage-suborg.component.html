@@ -1,47 +1,27 @@
 <div class="content">
-  <h1>Zarządzaj jednostkami podległymi jednostce: 7 Poznańska Drużyna Wędrowników Tratwa</h1>
+  <h1>Zarządzaj jednostkami podległymi jednostce:{{ getFullOrganizationName(mainOrganization) }} </h1>
 
   <div class="clr-row">
     <div class="clr-col-8">
-      <span class="column-header">Edytuj jednostki podległe</span>
-
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Logo</th>
-          <th>Jednostka</th>
-          <th>Funkcja</th>
-          <th>Akcje</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>7 Poznańska Drużyna Wędrowników Tratwa</td>
-          <td>Drużynowy</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Poznański krąg starszo harcerski</td>
-          <td>Przewodniczący</td>
-          <td></td>
-        </tr>
-        </tbody>
-      </table>
       <br>
       <span class="column-header">Wybierz zarządzaną jednostkę</span>
-      <select clrSelect style="width: 100%;">
-        <option value="0">Kuny</option>
-        <option value="1">Jenoty</option>
-        <option value="2">Losie</option>
+      <select clrSelect style="width: 100%;"
+              [(ngModel)]="currentOrganization"
+              (change)="onChangeOrganization()"
+              name="Wybrana organizacja"
+      >
+
+        <option *ngFor="let subOrganizationFromMain of getMainOrganization();"
+                [ngValue]="subOrganizationFromMain">{{getFullOrganizationName(subOrganizationFromMain)}}</option>
+
       </select>
 
     </div>
     <div class="clr-col-4">
       <div class="cards-container">
-        <div class="card">
-          <div class="card-img">
+        <div class="card" (click)="gotomanageorg()" >
+          <div class="card-img "  >
+
             <img src="assets/images/image_placeholder.png" alt="img">
           </div>
           <div class="card-block">
@@ -50,7 +30,7 @@
             </p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" (click)="gotomanageorgcommander()">
           <div class="card-img">
             <img src="assets/images/image_placeholder.png" alt="img">
           </div>
@@ -67,17 +47,15 @@
 
   <hr/>
 
-  <h2>Kuny</h2>
+  <h2>{{getFullOrganizationName(currentOrganization)}}</h2>
   <div class="clr-row">
 
     <div class="clr-col-4">
       <div class="user-profile">
 
         <div class="user-image">
-          <img  class="user-img" alt="user" src="assets/images/info.svg">
-          <span class="img-badge">
-        <img class="badge-img" alt="badge" src="assets/images/user.svg">
-      </span>
+          <img style="max-height: 200px; max-width: 200px;"  alt="user"
+               [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(currentOrganization.image===null?'alert-circle.svg':currentOrganization.image) | secure | async"/>
         </div>
       </div>
     </div>
@@ -94,22 +72,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Kuny</td>
-          <td>Zastęp</td>
+        <tr *ngFor="let subOrganization of getCurrentSubOrganization();">
+          <td><img style="max-height: 30px; max-width: 30px;"  alt="user"
+                   [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(subOrganization.image===null?'alert-circle.svg':subOrganization.image) | secure | async"
+          ></td>
+          <td>{{subOrganization.name}}</td>
+          <td>{{subOrganization.organizationType}}</td>
         </tr>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Jenoty</td>
-          <td>Zastęp</td>
-        </tr>
-        <tr>
-          <td><cds-icon shape="info-circle"></cds-icon></td>
-          <td>Łosie</td>
-          <td>Zastęp</td>
-        </tr>
-        </tbody>
+
       </table>
       <br>
       <span class="column-header">Harcerze należący do organizacji</span>
@@ -124,27 +94,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>Jan Dzban</td>
-          <td>Cwik</td>
-          <td>jan-dzban@zh.pl</td>
-          <td>Drużynowy</td>
-          <td>Waleczny Łoś</td>
+        <tr *ngFor="let userOrganization of getCurrentOrganizationUsers();">
+          <td>{{userOrganization.name+" "+userOrganization.surname}}</td>
+          <td>{{userOrganization.scoutRankName}}</td>
+          <td>{{userOrganization.email}}</td>
+          <td>{{userOrganization.organizationFunction}}</td>
+          <td>{{userOrganization.nickName}}</td>
         </tr>
-        <tr>
-          <td>Kajetan Majeranek</td>
-          <td>Harcerz Orli</td>
-          <td>major@gmail.com</td>
-          <td>Przyboczny</td>
-          <td>Gruby Łoś</td>
-        </tr>
-        <tr>
-          <td>Antek Cwaniak</td>
-          <td>Młodzik</td>
-          <td>cwaniak@gmail.com</td>
-          <td>Szeregowy</td>
-          <td>Mały Łoś</td>
-        </tr>
+
         </tbody>
       </table>
 

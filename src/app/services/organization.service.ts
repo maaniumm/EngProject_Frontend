@@ -1,0 +1,148 @@
+import { Injectable } from '@angular/core';
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {CustomResponse} from "../models/CustomResponse";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class OrganizationService {
+
+  constructor(private http: HttpClient) { }
+
+  getAllOrganizationUsersAttempt(organizationId : number):Observable<CustomResponse>{
+    let params = new HttpParams()
+      .set('idOrganization', organizationId);
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getAllOrganizationUsersAttempt',{params:params});
+  }
+  getUserOwnedOrganizations():Observable<CustomResponse>{
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getUserOwnedOrganizations')
+  }
+  getAllActiveLines(organizationId : number): Observable<CustomResponse> {
+
+    const params = new HttpParams().append('idOrganization', organizationId);
+
+    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/allActiveLines`,{params : params});
+  }
+
+  getOrganizationWhereUserBelong(organizationId : number): Observable<CustomResponse> {
+
+    const params = new HttpParams().append('idOrganization', organizationId);
+
+    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/getOrganization`,{params : params});
+  }
+  getSubOrganizationBelongToMainOrganization(organizationId : number): Observable<CustomResponse> {
+
+    const params = new HttpParams().append('idOrganization', organizationId);
+
+    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/getSubOrganizationBelongToMainOrganization`,{params : params});
+  }
+  getAllUsersFromOrganization(organizationId : number): Observable<CustomResponse> {
+
+    const params = new HttpParams().append('idOrganization', organizationId);
+
+    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/allUsersFromOrganization`, {params: params});
+  }
+
+  getOrganization(organizationId : number): Observable<CustomResponse>{
+
+    const params = new HttpParams().append('idOrganization', organizationId );
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getOrganization',{params:params});
+
+  }
+
+
+  putOrganizationPhoto(photo : any,organizationId:number): Observable<CustomResponse>{
+
+
+    console.log(photo)
+
+    let uploadForm = new FormData();
+
+
+    uploadForm.append(
+      'photo', photo,photo.name
+    );
+
+
+
+    let params = new HttpParams()
+      .set('organizationId', organizationId )
+    return this.http.put<CustomResponse>('http://localhost:8080/api/v1/organization/changeOrganizationPhoto',uploadForm,{params:params});
+
+  }
+
+  putOrganizationName(organizationName : string,organizationId:number): Observable<CustomResponse>{
+
+    let params = new HttpParams()
+      .set('organizationId', organizationId )
+      .set('organizationName', organizationName )
+    return this.http.put<CustomResponse>('http://localhost:8080/api/v1/organization/changeOrganizationName',{},{params:params});
+
+  }
+
+
+  getAllOwnersFromOrganization(organizationId : number): Observable<CustomResponse>{
+
+    const params = new HttpParams().append('idOrganization', organizationId );
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getAllOwnerFromOrganization',{params:params});
+
+  }
+
+
+  addOwnerToOrganization(organizationId : number,appUserEmail : String): Observable<CustomResponse>{
+
+    let params = new HttpParams()
+      .set('idOrganization', organizationId )
+      .set('email', appUserEmail.toString() )
+    return this.http.patch<CustomResponse>('http://localhost:8080/api/v1/organization/grantOwnerPermission',{},{params:params});
+
+  }
+
+  removeOwnerToOrganization(organizationId : number,appUserEmail : String): Observable<CustomResponse>{
+
+    let params = new HttpParams()
+      .set('idOrganization', organizationId )
+      .set('email', appUserEmail.toString() )
+    return this.http.patch<CustomResponse>('http://localhost:8080/api/v1/organization/removeOwnerPermission',{},{params:params});
+
+  }
+
+
+  createSubOrganization(photo : any,organizationId:number,organizationName: string,ownerEmail: String): Observable<CustomResponse>{
+
+
+    console.log(photo)
+
+    let uploadForm = new FormData();
+
+
+    uploadForm.append(
+      'myFile', photo,photo.name
+    );
+
+
+
+    let params = new HttpParams()
+      .set('superiorOrganizationId', organizationId )
+      .set('email', ownerEmail.toString() )
+      .set('name', organizationName )
+    return this.http.post<CustomResponse>('http://localhost:8080/api/v1/organization/suborganization',uploadForm,{params:params});
+
+  }
+
+
+  getUsersFromOutSideOrganization(organizationId : number): Observable<CustomResponse>{
+
+    const params = new HttpParams().append('organizationId', organizationId );
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getUsersFromOutSideOrganization',{params:params});
+
+  }
+
+
+
+
+
+
+
+}

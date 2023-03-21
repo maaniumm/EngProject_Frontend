@@ -6,7 +6,8 @@ import {ACTION_TYPE} from "../enums/ACTION_TYPE";
 import {Organization} from "../models/Organization";
 import {NgForm} from "@angular/forms";
 import {Order} from "../models/Order";
-import {Router} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {OrganizationService} from "../services/organization.service";
 
 @Component({
   selector: 'app-create-order',
@@ -17,6 +18,7 @@ import {Router} from "@angular/router";
 export class CreateOrderComponent implements OnInit {
 
 
+  public staticOrganization=0;
   public newOrder : Order = new Order();
   public actionQueueLines : ActionQueueLine[] = [];
   public actionQueueLinesGRANTING_MERITBADGE_AND_RANKS :ActionQueueLine[] = [];
@@ -31,13 +33,19 @@ export class CreateOrderComponent implements OnInit {
   public finalOrderQueueLinesGrantingAndRevoking_FUNCTION:ActionQueueLine[]=[];
 
 
-  constructor(public  orderService:OrderService,private router: Router) {
+  constructor(public  orderService:OrderService,public organizationService:OrganizationService,private router: Router,private  route:ActivatedRoute) {
+
+
+    this.route.paramMap.subscribe((params:ParamMap)=>{
+      this.staticOrganization =parseInt(params.get('organizationId')!);
+
 
 
 
     //Get Action Queue Line information
 
-    orderService.getAllActiveLines(2).subscribe( (customResponse : CustomResponse) =>{
+      organizationService.getAllActiveLines(this.staticOrganization).subscribe( (customResponse : CustomResponse) =>{
+      console.log(customResponse)
       this.actionQueueLines=customResponse.data.getActiveTask;
       this.actionQueueLines.forEach(
         actionQueue=>{
@@ -66,12 +74,12 @@ export class CreateOrderComponent implements OnInit {
 
     //Get Organization information
 
-    orderService.getOrganization(2).subscribe((customResponse : CustomResponse) =>{
+    organizationService.getOrganizationWhereUserBelong(this.staticOrganization).subscribe((customResponse : CustomResponse) =>{
       this.orderOrganization=customResponse.data.organization;
       console.log(this.orderOrganization)
     })
 
-
+    })
 
   }
 
@@ -217,7 +225,7 @@ export class CreateOrderComponent implements OnInit {
     console.log(this.newOrder);
 
 
-    this.orderService.postViewOrder(2, this.newOrder).subscribe((res)=>{
+    this.orderService.postViewOrder(this.staticOrganization, this.newOrder).subscribe((res)=>{
       let blob:Blob=res.body as Blob;
       let url = window.URL.createObjectURL(blob);
       window.open(url);
@@ -262,7 +270,7 @@ export class CreateOrderComponent implements OnInit {
 
   creteOrderSecondStep(form: NgForm){
 
-    this.orderService.createOrder(2, this.newOrder).subscribe((res)=>
+    this.orderService.createOrder(this.staticOrganization, this.newOrder).subscribe((res)=>
     {
 
       if (res.data.addOrder){
