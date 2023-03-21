@@ -35,5 +35,4 @@ export class RegisterComponent implements OnInit {
     }).subscribe( )
     this.router.navigate(['']);
   }
-
 }
