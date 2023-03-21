@@ -11,6 +11,13 @@
   padding-top: .1rem;
 
 }
+.org-img{
+  position: relative;
+  width: 3rem;
+  border-radius: 50%;
+  border: 3px solid var(--defoultColor);
+
+}
 
 .user-info{
   display: flex;
@@ -122,6 +129,10 @@ clr-progress-bar{
   z-index: 2;
   border-radius: 5px ;
   background: rgba(0,0,0,0.5);
+}
+
+td {
+  vertical-align: middle;
 }
 .filled{
   background-color: black;
