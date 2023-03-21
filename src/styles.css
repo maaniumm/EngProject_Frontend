@@ -24,3 +24,8 @@ body{
   justify-content: center;
   align-items: center;
 }
+
+hr{
+  width: 80%;
+  border: 1px solid hsl(48, 95%, 48%);
+}
