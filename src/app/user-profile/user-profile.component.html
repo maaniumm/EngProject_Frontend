@@ -12,7 +12,8 @@
       >
       <span class="img-badge">
         <img class="badge-img" alt="badge"
-             src="assets/images/scoutMark/{{userDetails.data.userProfilDetails.scoutRank.imageURL}}">
+             [attr.src]="'http://localhost:8080/images/scoutRankPhoto/'+(userDetails.data.userProfilDetails.scoutRank.imageURL===null?'rekrut.png':userDetails.data.userProfilDetails.scoutRank.imageURL) | secure | async"
+        >
       </span>
     </div>
 
@@ -57,7 +58,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let role of userDetails.data.userProfilDetails.roles">
-          <td><img  class="user-img" alt="user"
+          <td><img *ngIf="role.organizationRole.image!=''"  class="org-img" alt="org-img"
                     [attr.src]="'http://localhost:8080/images/organizationPhoto/'+role.organizationRole.image | secure | async"
           ></td>
           <td>{{ role.organizationRole.name }}</td>
