@@ -5,6 +5,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { Observable } from 'rxjs';
 import {HttpEventType, HttpResponse} from "@angular/common/http";
+import {UserProfileEdit} from "../models/user-profile-edit.model";
 
 
 registerLocaleData(localeFr);
@@ -26,6 +27,7 @@ export class ManageProfileComponent implements OnInit {
   //   statusCode: number;
   //   timeStamp: string;
   // }();
+  editedUserDetails?: UserProfileEdit;
   submitted = false;
   selectedFiles?: FileList;
   currentFile?: File;
@@ -34,6 +36,8 @@ export class ManageProfileComponent implements OnInit {
   preview = '';
   imageInfos?: Observable<any>;
 
+  isModalVisible = false;
+  isModalPhotoVisible = false;
   onChange() { this.submitted = true; }
   ngOnInit(): void {
     this.userProfileService.getUserDetails().subscribe(res => {
@@ -83,10 +87,11 @@ export class ManageProfileComponent implements OnInit {
       if (file) {
         this.currentFile = file;
 
-        this.userProfileService.putUserProfile(this.currentFile).subscribe({
+        this.userProfileService.putUserProfilePhoto(this.currentFile).subscribe({
           next: (event: any) => {
             if (event) {
               console.log(event)
+              this.isModalPhotoVisible = true
             }
           },
           error: (err: any) => {
@@ -98,5 +103,27 @@ export class ManageProfileComponent implements OnInit {
 
       this.selectedFiles = undefined;
     }
+  }
+
+  changeUserProfileData(): void{
+    let params = {
+      name: this.userDetails?.data.userProfilDetails.name,
+      surname: this.userDetails?.data.userProfilDetails.surname,
+      birthday: this.userDetails?.data.userProfilDetails.birthday,
+      nickName: this.userDetails?.data.userProfilDetails.nickName,
+    }
+    console.log(params);
+    this.userProfileService.putUserProfileChange(params).subscribe({
+      next: (event: any) => {
+        if (event) {
+          console.log(event);
+          this.isModalVisible = true;
+        }
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+
   }
 }

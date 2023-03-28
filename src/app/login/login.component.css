@@ -160,3 +160,10 @@ input[type="submit"]:hover {
   color: black;
   font-size: 16px;
 }
+.content-area{
+  padding: 0rem;
+}
+
+/*.login-background{*/
+/*background-image: url("src/assets/images/kajak.jpg");*/
+/*}*/

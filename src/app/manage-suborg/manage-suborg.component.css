@@ -124,14 +124,14 @@ clr-progress-bar{
   flex-wrap: wrap;
 }
 
-.card{
-  width: 6rem;
-  min-height: 8rem;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
+/*.card{*/
+/*  width: 6rem;*/
+/*  min-height: 8rem;*/
+/*  border-radius: 10px;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  cursor: pointer;*/
+/*}*/
 
 
 .card-text{

@@ -1,9 +1,7 @@
-export class CustomResponse {
+export class UserProfileEdit {
   constructor(
-    public name?: "name",
-    public surname?: "surname",
-    public authorized?: null,
-    public active?: null,
-    public birthday?: "2022-11-25",
-    public nickName?: "Test"){}
+    public name?: string,
+    public surname?: string,
+    public birthday?: string,
+    public nickName?: string){}
 }

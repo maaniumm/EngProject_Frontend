@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {AppliedAttempt} from "../models/applied-attempt.model";
 import {CreatedAttempt} from "../models/created-attempt.model";
 import {Order} from "../models/Order";
+import {UserProfileEdit} from "../models/user-profile-edit.model";
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +24,15 @@ export class UserProfileService {
     return this.http.get<CreatedAttempt>('/api/v1/attempt/getAllMyCreatedAttempt');
   }
 
-  putUserProfile(file: File): Observable<any> {
+  putUserProfilePhoto(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('photo', file);
 
     return this.http.put('http://localhost:8080/api/v1/appUser/changeMyUserProfilePhoto',formData);
   }
 
+  putUserProfileChange(profile: any): Observable<any> {
 
+    return this.http.put('http://localhost:8080/api/v1/appUser/changeMyUserDetails',profile);
+  }
 }
