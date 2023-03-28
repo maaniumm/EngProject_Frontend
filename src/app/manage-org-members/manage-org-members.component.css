@@ -30,8 +30,22 @@ form{
   justify-content: center;
   align-items: center;
 }
+.form-col{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 .form-row input{
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background-color: whitesmoke;
+  padding: .3rem .3rem .3rem 1rem;
+}
+.form-col input{
   width: 100%;
   border-radius: 5px;
   border: none;
@@ -62,6 +76,14 @@ form{
   color: black;
   font-weight: bold;
 }
+.form-col button{
+  width: 100%;
+  margin: 0;
+  background-color: hsl(48, 95%, 48%);
+  border: 1px solid hsl(48, 95%, 48%);
+  color: black;
+  font-weight: bold;
+}
 
 .form-error{
   color: #cc4444;
@@ -81,4 +103,36 @@ form{
 
 p{
   text-align: center;
+}
+.rowNew{
+  margin: 2px;
+}
+
+.clr-combobox-form-control{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+clr-control-container.clr-error{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.clr-combobox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.clr-subtext{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -13,6 +13,11 @@ export class AppUserService {
   getMyProfileDetails(): Observable<CustomResponse>{
     return this.http.get<CustomResponse>('http://localhost:8080/api/v1/appUser/getMyUserDetails');
   }
+  getUserProfailDetails(email:String): Observable<CustomResponse>{
+    let params = new HttpParams()
+      .set('email', email.toString() );
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/appUser/UserProfailDetails',{params:params});
+  }
   getAllUsersWithOutYou(): Observable<CustomResponse>{
     return this.http.get<CustomResponse>('http://localhost:8080/api/v1/appUser/getAllUsersWithOutYou');
   }

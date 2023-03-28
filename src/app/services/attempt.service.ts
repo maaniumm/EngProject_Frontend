@@ -73,7 +73,12 @@ export class AttemptService {
     return this.http.put<CustomResponse>('http://localhost:8080/api/v1/attempt/closeAttempt',{},{params:params});
 
   }
-
+  getAllScoutRank():Observable<CustomResponse>{
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/scoutranks')
+  }
+  getAllScoutInstructorRank():Observable<CustomResponse>{
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/scoutinstructorranks')
+  }
 
 
 

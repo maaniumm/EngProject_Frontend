@@ -139,6 +139,34 @@ export class OrganizationService {
 
   }
 
+  addAppUsetToOrganization(email:String,idOrganization : number,nameRole:string):Observable<CustomResponse>{
+    console.log(email)
+    console.log(idOrganization)
+    console.log(nameRole)
+
+    let params = new HttpParams()
+      .set('email', email.toString() )
+      .set('idOrganization', idOrganization )
+      .set('nameRole', nameRole )
+    return this.http.post<CustomResponse>('http://localhost:8080/api/v1/organization/addusertoorganization',{},{params:params});
+  }
+
+
+  getAllUsersFromOrganizationWithOutYou(idOrganization : number): Observable<CustomResponse>{
+
+    const params = new HttpParams().append('idOrganization', idOrganization );
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getAllUsersFromOrganizationWithOutYou',{params:params});
+
+  }
+
+  deleteUserFromOrganization(email : String, idOrganization:number): Observable<CustomResponse>{
+
+    let params = new HttpParams()
+      .set('email', email.toString() )
+      .set('idOrganization', idOrganization );
+    return this.http.delete<CustomResponse>('http://localhost:8080/api/v1/organization/delateFromOrganization',{params:params});
+
+  }
 
 
 

@@ -1,33 +1,41 @@
 <div class="content">
   <h1>Zarządzaj swoim profilem</h1>
-
-  <div class="form">
+{{appUserProfileDetails | json}}
+  <div class="form" >
     <h3>Dane harcerskie</h3>
-    <form>
+    <form >
 
-      <div class="form-row">
-        <input type="text" placeholder="Ksywka/Nick"/>
+      <div class="form-row" >
+        <input type="text" placeholder="Ksywka/Nick" [(ngModel)]="appUserProfileDetails.nickName" name="ksywka"/>
       </div>
 
       <div class="form-row">
-        <select clrSelect style="width: 100%;">
-          <option value="0">Stopień harcerski 1</option>
-          <option value="1">Stopień harcerski 2</option>
+        <select clrSelect
+                style="width: 100%;"
+                [(ngModel)]="appUserProfileDetails!.scoutRank!"
+                name="scoutRank"
+                [ngModelOptions]="{standalone: true}"
+        >
+          <option *ngFor="let scoutRank1 of getScoutRanks();"
+                  [ngValue]="scoutRank1"  >{{scoutRank1.name}}</option>
+
         </select>
       </div>
 
       <div class="form-row">
-        <select clrSelect style="width: 100%;">
-          <option value="0">Harcmistrz</option>
-          <option value="1">Podharcmistrz</option>
-          <option value="1">Instruktor</option>
-          <option value="1">brak stopnia</option>
+        <select clrSelect style="width: 100%;"
+                [(ngModel)]="appUserProfileDetails.scoutInstructorRank"
+                name="scoutInstructorRank"
+        >
+          <option *ngFor="let instructorRank of getScoutInstructorRanks();"
+                  [ngValue]="instructorRank" >{{instructorRank.name}}</option>
+
         </select>
       </div>
 
 
       <div class="form-row">
-        <button class="btn btn-primary">Zapisz</button>
+        <button class="btn btn-primary" (click)="onChangeOrganization()">Zapisz</button>
       </div>
 
       <div class="form-row">
@@ -40,3 +48,6 @@
 
 
 </div>
+
+
+
