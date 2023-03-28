@@ -6,16 +6,16 @@
     <form #form="ngForm">
 
       <div class="form-row">
+        <input name="email" #email="ngModel" [(ngModel)]="this.userDetails.data.userProfilDetails.email" type="text" disabled placeholder="Email"/>
+      </div>
+
+      <div class="form-row">
 <!--        <input  type="text" placeholder="{{userDetails.data.userProfilDetails.surname}}"/>-->
         <input  name="imie" required #name="ngModel" [(ngModel)]="this.userDetails.data.userProfilDetails.name" type="text" placeholder="Imie"/>
       </div>
 
       <div class="form-row">
         <input name="nazwisko" required #surname="ngModel" [(ngModel)]="this.userDetails.data.userProfilDetails.surname" type="text" placeholder="Nazwisko"/>
-      </div>
-
-      <div class="form-row">
-        <input name="email" required #email="ngModel" [(ngModel)]="this.userDetails.data.userProfilDetails.email" type="text" placeholder="Email"/>
       </div>
 
       <div class="form-row">
@@ -31,7 +31,7 @@
       </div>
 
       <div class="form-row">
-        <button class="btn btn-primary">Zapisz</button>
+        <button class="btn btn-primary" (click)="changeUserProfileData()" >Zapisz</button>
       </div>
 
 
@@ -57,7 +57,34 @@
 
     </form>
 
+    <clr-modal [(clrModalOpen)]="isModalPhotoVisible">
+      <div class="modal-body">
+        <clr-alert [clrAlertType]="'success'">
+          <clr-alert-item>
+        <span class="alert-text">
+            Poprawnie zaktualiozwano zdjęcie profilowe.
+        </span>
+          </clr-alert-item>
+        </clr-alert>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" (click)="isModalPhotoVisible = false">okey </button>
+      </div>
+    </clr-modal>
   </div>
-
+  <clr-modal [(clrModalOpen)]="isModalVisible">
+    <div class="modal-body">
+      <clr-alert [clrAlertType]="'success'">
+        <clr-alert-item>
+        <span class="alert-text">
+            Poprawnie zaktualiozwano dane użytkownika.
+        </span>
+        </clr-alert-item>
+      </clr-alert>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn" (click)="isModalVisible = false">okey </button>
+    </div>
+  </clr-modal>
 
 </div>

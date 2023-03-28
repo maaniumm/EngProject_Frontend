@@ -5,7 +5,7 @@
     <div class="user-image">
       <div class="user-data">
         <span>{{ userDetails.data.userProfilDetails.nickName}}</span>
-        <clr-progress-bar clrValue="72" clrSuccess clrLabeled></clr-progress-bar>
+        <clr-progress-bar clrValue="{{userDetails.data.userProfilDetails.scoutRank.level/7*100 |  number : '1.0-2'}}" clrSuccess clrLabeled></clr-progress-bar>
       </div>
       <img  class="user-img" alt="user"
             [attr.src]="'http://localhost:8080/images/appUserPhoto/'+(userDetails.data.userProfilDetails.photo===null?'user.svg':userDetails.data.userProfilDetails.photo) | secure | async"
@@ -57,13 +57,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let role of userDetails.data.userProfilDetails.roles">
-          <td><img *ngIf="role.organizationRole.image!=''"  class="org-img" alt="org-img"
-                    [attr.src]="'http://localhost:8080/images/organizationPhoto/'+role.organizationRole.image | secure | async"
+        <tr *ngFor="let role of this.userDetails.data.userProfilDetails.roles">
+          <td><img *ngIf="role.organizationRole?.image!=''"  class="org-img" alt="org-img"
+                    [attr.src]="'http://localhost:8080/images/organizationPhoto/'+role.organizationRole?.image | secure | async"
           ></td>
-          <td>{{ role.organizationRole.name }}</td>
-          <td>{{ role.organizationRole.organizationType}}</td>
-          <td>{{ role.name}}</td>
+          <td>{{ role.organizationRole?.name}}</td>
+          <td>{{ role.organizationRole?.organizationType}}</td>
+          <td>{{ role?.name}}</td>
         </tr>
         </tbody>
       </table>
