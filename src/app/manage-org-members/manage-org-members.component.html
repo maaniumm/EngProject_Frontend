@@ -7,59 +7,69 @@
       <p>Wybierz osobę funkcyjną z listy poniżej</p>
 
       <div class="form-row">
-        <clr-combobox-container>
-          <label>My State</label>
-          <clr-combobox [(ngModel)]="appUserDetails" name="myState" required>
+        <clr-combobox-container >
+          <label>Wybierz Użytkownika</label>
+          <clr-combobox [(ngModel)]="appUserDetails" name="myState" required  >
             <clr-options>
-              <clr-option *clrOptionItems="let user of getAppAllAppUsers(); field:'surname'" [clrValue]="user">
+              <clr-option *clrOptionItems="let user of getAppAllAppUsers(); field:'searchParam'" [clrValue]="user">
                 <cds-icon shape="man" role="img" aria-label="World is turning"></cds-icon> {{user.name+" "+user.surname}}
 
               </clr-option>
             </clr-options>
           </clr-combobox>
-          <clr-control-helper>Helper text</clr-control-helper>
-          <clr-control-error>There was an error</clr-control-error>
+
         </clr-combobox-container>
       </div>
 
+
       <div class="form-row">
-        <select clrSelect style="width: 100%;">
-          <option value="0">Funkcja 1</option>
-          <option value="1">Funkcja 2</option>
+        {{roleName}}
+        <select clrSelect style="width: 100%;"
+                [(ngModel)]="roleName"
+
+                name="rola"
+        >
+          <option *ngFor="let roleNameInner of getRoleNameList()" >{{roleNameInner}}</option>
+
         </select>
       </div>
 
       <div class="form-row">
-        <button class="btn btn-primary">Dodaj osobę</button>
+        <button class="btn btn-primary" (click)="addAppUserToOrganization()">Dodaj osobę</button>
       </div>
 
-      <div class="form-row">
-        <span class="form-error">Źle uzupełniłeś dane!</span>
-      </div>
 
       <div class="form-row">
 
-        <h3>Wybierz zarządce jednostki</h3>
-        <h4 *ngIf="appUserDetails">{{appUserDetails.name+" "+appUserDetails.surname}}</h4>
+        <h3>Lista członków organizacji</h3>
+        <h4 *ngIf="appUserFromOrganization">{{appUserFromOrganization.name+" "+appUserFromOrganization.surname}}</h4>
 
-        <clr-datagrid [(clrDgSingleSelected)]="appUserDetails" >
+        <clr-datagrid [(clrDgSingleSelected)]="appUserFromOrganization" >
           <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
           <clr-dg-column [clrDgField]="'surname'">Surname</clr-dg-column>
+
           <clr-dg-column>Email</clr-dg-column>
 
+          <clr-dg-row *clrDgItems="let userFromOrganization of getallAppUsersFromOrganization()" [clrDgItem]="userFromOrganization">
+            <clr-dg-cell>{{userFromOrganization.name}}</clr-dg-cell>
+            <clr-dg-cell>{{userFromOrganization.surname}}</clr-dg-cell>
+            <clr-dg-cell>{{userFromOrganization.email}}</clr-dg-cell>
 
-          <clr-dg-row *clrDgItems="let user of getAppAllAppUsers()" [clrDgItem]="user">
-            <clr-dg-cell>{{user.name}}</clr-dg-cell>
-            <clr-dg-cell>{{user.surname}}</clr-dg-cell>
-            <clr-dg-cell>{{user.email}}</clr-dg-cell>
           </clr-dg-row>
 
           <clr-dg-footer> <clr-dg-pagination #pagination [clrDgPageSize]="10">
-            <clr-dg-page-size [clrPageSizeOptions]="[1,20,50,100]">Users per page</clr-dg-page-size>
+            <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]"></clr-dg-page-size>
             {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-            of {{pagination.totalItems}} users
+            z {{pagination.totalItems}} użytkowniów
           </clr-dg-pagination></clr-dg-footer>
         </clr-datagrid>
+      </div>
+      <div class="form-col">
+        <div class="rowNew"><button class="btn btn-primary" (click)="gotomanagescoutprofile()" [disabled]="getallAppUsersFromOrganization().length<=0 || appUserFromOrganization==null">Modyfikuj</button></div>
+        <div class="rowNew"><button class="btn btn-primary" (click)="deleteUserFromOrganization()" [disabled]="getallAppUsersFromOrganization().length<=0 || appUserFromOrganization==null">Usuń</button></div>
+
+
+
       </div>
 
 
@@ -69,3 +79,12 @@
 
 
 </div>
+
+
+<clr-modal [(clrModalOpen)]="showErrorValidationModal">
+  <h3 class="modal-title">Błąd</h3>
+  <div class="modal-body">Nie został wybrany użytkownik</div>
+  <div class="modal-footer">
+    <button type="button" class="btn" (click)="showErrorValidationModal = false">Zamknij</button>
+  </div>
+</clr-modal>
