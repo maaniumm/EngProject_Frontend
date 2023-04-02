@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CustomResponse} from "../models/CustomResponse";
+import {AppUserProfileDetails} from "../models/AppUserProfileDetails";
 
 @Injectable({
   providedIn: 'root'
@@ -168,6 +169,35 @@ export class OrganizationService {
 
   }
 
+  putChangeUserDetails(appUserProfileDetails:AppUserProfileDetails): Observable<CustomResponse>{
+
+    return this.http.put<CustomResponse>('http://localhost:8080/api/v1/organization/UserProfailDetails',appUserProfileDetails);
+
+  }
+
+  getChiefOfScout(): Observable<CustomResponse>{
+
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getChiefOfScout');
+
+  }
+
+  grantPermissionToChief(email : String):Observable<CustomResponse>{
+    console.log(email)
+
+
+    let params = new HttpParams()
+      .set('email', email.toString() )
+
+    return this.http.post<CustomResponse>('http://localhost:8080/api/v1/organization/admin/grantPermissionToChiefOfScout',{},{params:params});
+  }
+
+  deleteChiefPermission(email : String):Observable<CustomResponse>{
+
+    let params = new HttpParams()
+      .set('email', email.toString() )
+
+    return this.http.delete<CustomResponse>('http://localhost:8080/api/v1/organization/admin/deleteChiefPermission',{params:params});
+  }
 
 
 

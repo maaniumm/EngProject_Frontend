@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationGuard} from "../authentication.guard";
 
 @Component({
   selector: 'app-side-nav',
@@ -9,9 +10,16 @@ export class SideNavComponent implements OnInit {
 
   collapsed:boolean = true;
 
-  constructor() { }
+  constructor(private authenticationGuard:AuthenticationGuard) {
+
+    authenticationGuard.checkIfUserIsOwnerOfAnyOrganization();
+  }
 
   ngOnInit(): void {
+  }
+
+  checkIfUserIsLogIn():boolean{
+   return  this.authenticationGuard.checkIfUserIsLogon();
   }
 
 }

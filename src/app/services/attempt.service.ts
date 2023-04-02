@@ -79,7 +79,9 @@ export class AttemptService {
   getAllScoutInstructorRank():Observable<CustomResponse>{
     return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/scoutinstructorranks')
   }
-
+  getMyAllAppliedAttemptOpen():Observable<CustomResponse>{
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/getMyAllAppliedAttemptOpen')
+  }
 
 
 

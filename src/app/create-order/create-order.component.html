@@ -203,7 +203,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let actionQueueLineCREATE_ORGANIZATION of getActionQueueLineCREATE_ORGANIZATION();">
-            <td>{{actionQueueLineCREATE_ORGANIZATION.organization?.organizationType+" "+actionQueueLineCREATE_ORGANIZATION.organization?.name}}</td>
+            <td>{{actionQueueLineCREATE_ORGANIZATION.subOrganization?.organizationType+" "+actionQueueLineCREATE_ORGANIZATION.subOrganization?.name}}</td>
             <td>
               <button type="button" class="btn-List" aria-label="done" (click)="addToFinalOrderQueueLinesCREATE_ORGANIZATION(actionQueueLineCREATE_ORGANIZATION.id)">
                 <cds-icon shape="plus-circle"></cds-icon>

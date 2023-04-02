@@ -35,4 +35,28 @@ export class AuthenticationGuard implements CanActivate {
       return true;*/
   }
 
+
+  checkIfUserIsLogon(): boolean{
+
+
+    const access_token = localStorage.getItem('access_token');
+    if(access_token) {
+      return true
+    } else {
+      return false;
+    }
+
+
+  }
+
+  checkIfUserIsOwnerOfAnyOrganization(): boolean{
+    console.log("token : "+this.jwtService.tokenGetter())
+    console.log("token : "+this.jwtService)
+
+
+    return true;
+
+  }
+
+
 }
