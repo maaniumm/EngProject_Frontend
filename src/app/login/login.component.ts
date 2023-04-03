@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   sessionId: any = "";
   access_token: any = "";
   refresh_token: any = "";
+  scoutInstructorColor?: string;
 
   constructor(
     private router: Router,
@@ -21,6 +22,9 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.scoutInstructorColor = "#efc006";
+    document.documentElement.style.setProperty('--scoutInstructorColor', this.scoutInstructorColor);
+
   }
 
   login(): void {

@@ -44,3 +44,17 @@ hr{
   filter: sepia(5%);
 }
 
+
+.org-img{
+  position: relative;
+  width: 2.7rem;
+  border-radius: 50%;
+  border: 3px solid var(--defoultColor);
+}
+.org-big-img{
+  position: relative;
+  width: 10.5rem;
+  border-radius: 50%;
+  border: 5px solid var(--defoultColor);
+  padding-top: .1rem;
+}

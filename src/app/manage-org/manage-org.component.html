@@ -83,8 +83,8 @@
     <div class="clr-col-4">
     <div class="user-profile">
 
-      <div class="user-image">
-        <img style="max-height: 200px; max-width: 200px;"  alt="user"
+      <div class="user-image-container">
+        <img class="org-big-img" alt="user"
              [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(currentOrganization.image===null?'alert-circle.svg':currentOrganization.image) | secure | async"/>
 
       </div>
@@ -107,7 +107,7 @@
         <tr *ngFor="let subOrganization of getCurrentSubOrganization();"
                      >
           <td>
-            <img style="max-height: 30px; max-width: 30px;"  alt="user"
+            <img class="org-img" alt="user"
                     [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(subOrganization.image===null?'alert-circle.svg':subOrganization.image) | secure | async"
           ></td>
           <td>{{subOrganization.name}}</td>
