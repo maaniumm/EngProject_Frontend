@@ -12,7 +12,7 @@ export class SideNavComponent implements OnInit {
 
   constructor(private authenticationGuard:AuthenticationGuard) {
 
-    authenticationGuard.checkIfUserIsOwnerOfAnyOrganization();
+
   }
 
   ngOnInit(): void {
@@ -20,6 +20,15 @@ export class SideNavComponent implements OnInit {
 
   checkIfUserIsLogIn():boolean{
    return  this.authenticationGuard.checkIfUserIsLogon();
+  }
+
+  checkIfUserHasOwnerPermission():boolean{
+    return this.authenticationGuard.checkIfUserIsOwnerOfAnyOrganization();
+  }
+
+
+  checkIfUserHasAdminPermission():boolean{
+    return this.authenticationGuard.checkIfUserIsAdmin();
   }
 
 }

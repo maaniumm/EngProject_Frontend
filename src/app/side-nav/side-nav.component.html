@@ -17,13 +17,13 @@
   </a>
   <a clrVerticalNavLink routerLink="manageprofile" routerLinkActive="active">
     <cds-icon clrVerticalNavIcon shape="cog"></cds-icon>
-    Zarządzanie profilem uzytkownika
+    Zarządzanie profilem użytkownika
   </a>
 <!--  <a clrVerticalNavLink routerLink="managescoutprofile" routerLinkActive="active">-->
 <!--    <cds-icon clrVerticalNavIcon shape="cog"></cds-icon>-->
 <!--    Zarządzanie profilem harcerski-->
 <!--  </a>-->
-  <a clrVerticalNavLink routerLink="manageadminrights" routerLinkActive="active">
+  <a clrVerticalNavLink *ngIf="checkIfUserHasAdminPermission()" routerLink="manageadminrights" routerLinkActive="active">
     <cds-icon clrVerticalNavIcon shape="cog"></cds-icon>
     Zarządzanie uprawnieniami administracyjnymi
   </a>
@@ -39,37 +39,37 @@
 <!--    <cds-icon clrVerticalNavIcon shape="flame"></cds-icon>-->
 <!--    Stwórz rozkaz-->
 <!--  </a>-->
-  <a clrVerticalNavLink routerLink="badgesrankhome">
+  <a clrVerticalNavLink *ngIf="checkIfUserHasOwnerPermission()" routerLink="badgesrankhome">
     <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>
     Stopnie i sprawności
   </a>
 <!--  <a clrVerticalNavLink routerLink="badgesrankdashboard">-->
 <!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
-<!--    Stopnie i sprawności - wybor typu-->
+<!--    Stopnie i sprawności - wybór typu-->
 <!--  </a>-->
 <!--  <a clrVerticalNavLink routerLink="createinsturctorattempt">-->
 <!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
-<!--    Swtórze próbę na stopień instuktorski-->
+<!--    Stwórz próbę na stopień instruktorski-->
 <!--  </a>-->
 <!--  <a clrVerticalNavLink routerLink="createscouttempt">-->
 <!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
-<!--    Swtórze próbę na stopień harcerski-->
+<!--    Stwórz próbę na stopień harcerski-->
 <!--  </a>-->
 <!--  <a clrVerticalNavLink routerLink="createmeritbadgeattempt">-->
 <!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
-<!--    Swtórze próbę na sprawność-->
+<!--    Stwórz próbę na sprawność-->
 <!--  </a>-->
 <!--  <a clrVerticalNavLink routerLink="orderdashboard">-->
 <!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
 <!--    Zeszyt rozkazów-->
 <!--  </a>-->
-  <a clrVerticalNavLink routerLink="manageorg">
+  <a clrVerticalNavLink *ngIf="checkIfUserHasOwnerPermission()" routerLink="manageorg">
     <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>
-    Zarzadzaj swoimi jednostkami
+    Zarządzaj swoimi jednostkami
   </a>
 <!--  <a clrVerticalNavLink routerLink="managesuborg">-->
 <!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
-<!--    Zarzadzaj jednostkami podległymi-->
+<!--    Zarządzaj jednostkami podległymi-->
 <!--  </a>-->
 <!--  <a clrVerticalNavLink routerLink="manageorgcommander">-->
 <!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->

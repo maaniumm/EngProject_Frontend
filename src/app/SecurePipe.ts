@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 
 @Pipe({

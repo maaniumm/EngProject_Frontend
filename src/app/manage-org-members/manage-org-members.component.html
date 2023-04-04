@@ -2,7 +2,7 @@
   <h1>Zarządzaj członkami jednostki</h1>
 
   <div class="form">
-    <h3>Nazwa jednostki</h3>
+    <h3>Nazwa: {{nameOrganization}}</h3>
     <form>
       <p>Wybierz osobę funkcyjną z listy poniżej</p>
 
@@ -50,7 +50,7 @@
 
           <clr-dg-column>Email</clr-dg-column>
 
-          <clr-dg-row *clrDgItems="let userFromOrganization of getallAppUsersFromOrganization()" [clrDgItem]="userFromOrganization">
+          <clr-dg-row *clrDgItems="let userFromOrganization of getAllAppUsersFromOrganization()" [clrDgItem]="userFromOrganization">
             <clr-dg-cell>{{userFromOrganization.name}}</clr-dg-cell>
             <clr-dg-cell>{{userFromOrganization.surname}}</clr-dg-cell>
             <clr-dg-cell>{{userFromOrganization.email}}</clr-dg-cell>
@@ -60,13 +60,13 @@
           <clr-dg-footer> <clr-dg-pagination #pagination [clrDgPageSize]="10">
             <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]"></clr-dg-page-size>
             {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-            z {{pagination.totalItems}} użytkowniów
+            z {{pagination.totalItems}} użytkowników
           </clr-dg-pagination></clr-dg-footer>
         </clr-datagrid>
       </div>
       <div class="form-col">
-        <div class="rowNew"><button class="btn btn-primary" (click)="gotomanagescoutprofile()" [disabled]="getallAppUsersFromOrganization().length<=0 || appUserFromOrganization==null">Modyfikuj</button></div>
-        <div class="rowNew"><button class="btn btn-primary" (click)="deleteUserFromOrganization()" [disabled]="getallAppUsersFromOrganization().length<=0 || appUserFromOrganization==null">Usuń</button></div>
+        <div class="rowNew"><button class="btn btn-primary" (click)="goToManageScoutProfile()" [disabled]="getAllAppUsersFromOrganization().length<=0 || appUserFromOrganization==null">Modyfikuj</button></div>
+        <div class="rowNew"><button class="btn btn-primary" (click)="deleteUserFromOrganization()" [disabled]="getAllAppUsersFromOrganization().length<=0 || appUserFromOrganization==null">Usuń</button></div>
 
 
 

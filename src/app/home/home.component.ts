@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {AppUserDetails} from "../models/AppUserDetails";
 import {AppUserService} from "../services/app-user.service";
 import {CustomResponse} from "../models/CustomResponse";
 import {AppUserProfileDetails} from "../models/AppUserProfileDetails";
-import {UserProfileService} from "../services/user-profile.service";
-import {ActionQueueLine} from "../models/ActionQueueLine";
 import {AttemptService} from "../services/attempt.service";
 import {Attempt} from "../models/Attempt";
 

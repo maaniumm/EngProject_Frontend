@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CustomResponse} from "../models/CustomResponse";
-import {Order} from "../models/Order";
 import {Attempt} from "../models/Attempt";
 
 @Injectable({

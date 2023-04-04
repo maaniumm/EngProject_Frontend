@@ -45,7 +45,7 @@ export class EditOrgComponent implements OnInit {
 
   changePhoto(event: any) {
 
-    //Check if photo is chosen
+
     if(!event.target.files[0] || event.target.files[0].length == 0) {
       this.message = 'Musisz wybrać zdjęcie';
       return;

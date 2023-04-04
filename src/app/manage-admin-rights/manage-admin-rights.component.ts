@@ -99,7 +99,7 @@ export class ManageAdminRightsComponent implements OnInit {
     console.log(this.appUserAdminChoosenToRevokePermission)
 
     if(this.appUserAdminChoosenToRevokePermission===undefined || this.appUserAdminChoosenToRevokePermission.email===null){
-      this.errorMessage="Brak wybranego użytkownika do odberania uprawnień administratora"
+      this.errorMessage="Brak wybranego użytkownika do odebrania uprawnień administratora"
       this.showErrorValidationModal=true;
       return;
     }

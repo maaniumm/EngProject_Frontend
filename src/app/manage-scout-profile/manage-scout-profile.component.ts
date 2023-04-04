@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppUserService} from "../services/app-user.service";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {ActivatedRoute, ParamMap} from "@angular/router";
 import {CustomResponse} from "../models/CustomResponse";
 import {AppUserProfileDetails} from "../models/AppUserProfileDetails";
 import {ScoutRank} from "../models/ScoutRank";
@@ -28,7 +28,7 @@ export class ManageScoutProfileComponent implements OnInit {
 
 
 
-  constructor( public appUserService:AppUserService,public attemptService:AttemptService,private organizationService:OrganizationService,private  route:ActivatedRoute,private router: Router) {}
+  constructor( public appUserService:AppUserService,public attemptService:AttemptService,private organizationService:OrganizationService,private  route:ActivatedRoute) {}
 
   getScoutInstructorRanks(): ScoutInstructorRank[]{
     return this.scoutInstructorRanks
