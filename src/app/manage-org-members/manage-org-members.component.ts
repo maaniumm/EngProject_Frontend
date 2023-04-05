@@ -3,6 +3,7 @@ import {OrganizationService} from "../services/organization.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {CustomResponse} from "../models/CustomResponse";
 import {AppUserDetails} from "../models/AppUserDetails";
+import {Organization} from "../models/Organization";
 
 @Component({
   selector: 'app-manage-org-members',
@@ -15,7 +16,24 @@ export class ManageOrgMembersComponent implements OnInit {
   public appUserDetails:AppUserDetails=new AppUserDetails();
   public appUserFromOrganization:AppUserDetails=new AppUserDetails();
   public roleName?:string="Harcerz";
-  public roleNameList : String[]=["Przyboczny","Skarbnik","Harcerz"];
+  public organization:Organization=new Organization()
+  public nameOrganization:string="Pusta"
+
+  public roleNameList : String[]=["Harcerz"];
+
+  public roleNameListZastep : String[]=["Podzastępowy", "Proporcowy", "Apteczkowy"];
+
+  public roleNameListDrozyna : String[]=["Przyboczny", "Kwatermistrz", "Wódz Gromady"];
+
+  public roleNameListHufiec : String[]=["Zastępca Hufcowego", "Członek Rady Hufca", "Sekretarz Hufca", "Szef Kapituły Stopni Harcerskich"];
+
+  public roleNameListChorongiew : String[]=["Zastępca Komendanta Chorągwi",
+    "Członek Rady Chorągwi", "Szef Kapituły Stopni Instruktorskich", "Komendant Szkoły Instruktorskiej", "Kapelan"];
+  public roleNameListKwateraGlowna : String[]=["Naczelnik", "Zastępca Naczelnika", "Członkowie GKH"];
+
+
+
+
   public allAppUsersFromOrganization:AppUserDetails[]=[];
   public showErrorValidationModal = false;
 
@@ -40,6 +58,11 @@ export class ManageOrgMembersComponent implements OnInit {
     this.organizationService.getAllUsersFromOrganizationWithOutYou(this.staticOrganization).subscribe((customRespoceUsersAll:CustomResponse)=>{
       this.allAppUsersFromOrganization=customRespoceUsersAll.data.getAllUsersFromOrganizationWithOutYou
     })
+    this.organizationService.getOrganization(this.staticOrganization).subscribe((customRespoceOrg:CustomResponse)=>{
+        this.organization=customRespoceOrg.data.organization
+        this.nameOrganization=this.organization.name!
+    })
+
   }
 
 
@@ -48,9 +71,14 @@ export class ManageOrgMembersComponent implements OnInit {
   }
 
   getRoleNameList(){
-    return this.roleNameList
+    if (this.organization.organizationType==="ZASTEP"){return this.roleNameListZastep;}
+    else if (this.organization.organizationType==="DRUZYNA"){return this.roleNameListDrozyna;}
+    else if (this.organization.organizationType==="HUFIEC"){return this.roleNameListHufiec;}
+    else if (this.organization.organizationType==="CHORAGIEW"){return this.roleNameListChorongiew;}
+    else if (this.organization.organizationType==="KWATERA_GLOWNA"){return this.roleNameListKwateraGlowna;}
+    else {return this.roleNameList}
   }
-  getallAppUsersFromOrganization(){
+  getAllAppUsersFromOrganization(){
     return this.allAppUsersFromOrganization
   }
 
@@ -84,7 +112,7 @@ export class ManageOrgMembersComponent implements OnInit {
     })
   }
 
-  gotomanagescoutprofile(){
+  goToManageScoutProfile(){
     this.router.navigate(['managescoutprofile',{email:this.appUserFromOrganization.email!}]);
   }
 

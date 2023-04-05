@@ -16,5 +16,7 @@ export class ActionQueueLine {
     public meritBadge?:MeritBadge,
     public scoutRank?:ScoutRank,
     public scoutInstructorRank?:ScoutInstructorRank,
-    public role?:Role) {}
+    public role?:Role,
+    public subOrganization?:Organization
+  ) {}
 }

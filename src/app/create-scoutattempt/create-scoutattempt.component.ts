@@ -35,7 +35,7 @@ export class CreateScoutattemptComponent implements OnInit {
       attemptService.getAllScoutRankAvailable(this.staticEmail).subscribe((customRespoce:CustomResponse)=>{
 
         this.availableScoutRank=customRespoce.data.getAllScoutRankAvailableForAppUserAttempt;
-        //For selector in html
+
         this.newAttempt.scoutRankId=this.availableScoutRank.at(0);
       })
     })

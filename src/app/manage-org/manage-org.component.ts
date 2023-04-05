@@ -3,7 +3,6 @@ import {OrganizationService} from "../services/organization.service";
 import {Router} from "@angular/router";
 import {Organization} from "../models/Organization";
 import {CustomResponse} from "../models/CustomResponse";
-import {ORGANIZATION_TYPE} from "../enums/ORGANIZATION_TYPE";
 import {AppUserOrganization} from "../models/AppUserOrganization";
 
 @Component({

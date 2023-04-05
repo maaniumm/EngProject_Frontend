@@ -65,3 +65,6 @@ hr{
   flex-direction: column;
   gap: .4rem;
 }
+.datagrid-row-detail {
+  display: block;
+}

@@ -7,7 +7,6 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import {RestapiService} from "./restapi.service";
 import {AppRoutingModule} from "./app-routing.module";
 import {RequestInterceptor} from "./request.interceptor";
 import { JwtModule } from "@auth0/angular-jwt";

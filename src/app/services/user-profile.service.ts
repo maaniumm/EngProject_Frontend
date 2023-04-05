@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {UserProfile} from "../models/user-profile.model";
 import {Observable} from "rxjs";
 import {AppliedAttempt} from "../models/applied-attempt.model";
 import {CreatedAttempt} from "../models/created-attempt.model";
-import {Order} from "../models/Order";
-import {UserProfileEdit} from "../models/user-profile-edit.model";
+
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CustomResponse} from "../models/CustomResponse";
-import {Order} from "../models/Order";
 import {Attempt} from "../models/Attempt";
 
 @Injectable({
@@ -79,7 +78,9 @@ export class AttemptService {
   getAllScoutInstructorRank():Observable<CustomResponse>{
     return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/scoutinstructorranks')
   }
-
+  getMyAllAppliedAttemptOpen():Observable<CustomResponse>{
+    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/getMyAllAppliedAttemptOpen')
+  }
 
 
 
