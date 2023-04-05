@@ -72,8 +72,8 @@
 
       <span class="column-subheader">Próby których jesteś opiekunem</span>
       <clr-datagrid *ngIf="createdAttempt">
-        <clr-dg-column>ID</clr-dg-column>
-        <clr-dg-column>Nazwa próby</clr-dg-column>
+<!--        <clr-dg-column>ID</clr-dg-column>-->
+        <clr-dg-column >Nazwa próby</clr-dg-column>
         <clr-dg-column [clrDgField]="'TYPE'" [clrDgSortOrder]="descSort" >Typ próby</clr-dg-column>
         <clr-dg-column>Imie i nazwisko probanta</clr-dg-column>
         <clr-dg-column>Organizacja</clr-dg-column>
@@ -81,9 +81,13 @@
         <ng-container *clrDgItems="let attempt of createdAttempt.data.getAllCreatedAttempt">
           <clr-dg-row *ngIf="attempt.STATUS=='OPEN'">
             <-- Cells declarations -->
-            <clr-dg-cell>{{attempt.id}}</clr-dg-cell>
+<!--            <clr-dg-cell>{{attempt.id}}</clr-dg-cell>-->
             <clr-dg-cell>{{attempt.name}}</clr-dg-cell>
-            <clr-dg-cell>{{attempt.TYPE}}</clr-dg-cell>
+            <clr-dg-cell>
+              <span *ngIf="attempt.TYPE=='SCOUT_INSTRUCTOR_RANK'">Instruktorska</span>
+              <span *ngIf="attempt.TYPE=='SCOUT_RANK'">Harcerska</span>
+              <span *ngIf="attempt.TYPE=='MERITBADGE'">Sprawność</span>
+            </clr-dg-cell>
             <clr-dg-cell>{{attempt.applicantId.name}} {{attempt.applicantId.surname}}</clr-dg-cell>
             <clr-dg-cell>{{attempt.organization.name}}</clr-dg-cell>
 
@@ -103,27 +107,29 @@
             </clr-dg-row-detail>
           </clr-dg-row>
         </ng-container>
-        <clr-dg-footer> Liczba prób:  {{createdAttempt.data.getAllCreatedAttempt.length}}</clr-dg-footer>
+        <clr-dg-footer> Liczba wszystkich prób:  {{createdAttempt.data.getAllCreatedAttempt.length}}</clr-dg-footer>
       </clr-datagrid>
 
 
       <span class="column-subheader">Próby które realizujesz</span>
       <clr-datagrid *ngIf="appliedAttempt">
-        <clr-dg-column>ID</clr-dg-column>
+<!--        <clr-dg-column>ID</clr-dg-column>-->
         <clr-dg-column>Nazwa próby</clr-dg-column>
         <clr-dg-column [clrDgField]="'TYPE'" [clrDgSortOrder]="descSort" >Typ próby</clr-dg-column>
         <clr-dg-column>Imie i nazwisko opiekuna</clr-dg-column>
         <clr-dg-column>Organizacja</clr-dg-column>
-        <clr-dg-column [clrDgField]="'STATUS'" [clrDgSortOrder]="descSort"  >Status</clr-dg-column>
         <ng-container *clrDgItems="let attempt of appliedAttempt.data.getMyAllAppliedAttempt">
         <clr-dg-row *ngIf="attempt?.STATUS=='OPEN'">
           <-- Cells declarations -->
-          <clr-dg-cell >{{attempt.id}}</clr-dg-cell>
+<!--          <clr-dg-cell >{{attempt.id}}</clr-dg-cell>-->
           <clr-dg-cell >{{attempt.name}}</clr-dg-cell>
-          <clr-dg-cell>{{attempt.TYPE}}</clr-dg-cell>
+          <clr-dg-cell>
+            <span *ngIf="attempt.TYPE=='SCOUT_INSTRUCTOR_RANK'">Instruktorska</span>
+            <span *ngIf="attempt.TYPE=='SCOUT_RANK'">Harcerska</span>
+            <span *ngIf="attempt.TYPE=='MERITBADGE'">Sprawność</span>
+          </clr-dg-cell>
           <clr-dg-cell>{{attempt.creatorId.name}} {{attempt.creatorId.surname}}</clr-dg-cell>
           <clr-dg-cell>{{attempt.organization.name}}</clr-dg-cell>
-          <clr-dg-cell>{{attempt.STATUS}}</clr-dg-cell>
 
 
           <clr-dg-row-detail *clrIfExpanded  class="datagrid-row-detail">
@@ -142,7 +148,7 @@
           </clr-dg-row-detail>
         </clr-dg-row>
         </ng-container>
-        <clr-dg-footer> Liczba prób:  {{appliedAttempt.data.getMyAllAppliedAttempt.length}}</clr-dg-footer>
+        <clr-dg-footer> Liczba wszystkich prób:  {{appliedAttempt.data.getMyAllAppliedAttempt.length}}</clr-dg-footer>
       </clr-datagrid>
 
     </div>
