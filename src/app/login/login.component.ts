@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access_token', this.access_token);
         localStorage.setItem('refresh_token', this.refresh_token);
         console.log("User is logged in");
-        this.router.navigate(['']);
+        this.router.navigate(['home']);
       } else {
         alert("Authentication failed.")
       }
