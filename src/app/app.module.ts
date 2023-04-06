@@ -19,7 +19,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 
 import '@cds/core/icon/register.js';
 import '@cds/core/select/register.js';
-import {noteIcon, ClarityIcons, userIcon, tasksIcon, cogIcon, infoCircleIcon, bullseyeIcon, timesCircleIcon, flameIcon, plusIcon, loginIcon} from '@cds/core/icon';
+import {logoutIcon, noteIcon, ClarityIcons, userIcon, tasksIcon, cogIcon, infoCircleIcon, bullseyeIcon, timesCircleIcon, flameIcon, plusIcon, loginIcon} from '@cds/core/icon';
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CreateOrgComponent } from './create-org/create-org.component';
@@ -41,7 +41,7 @@ import { BadgesrankHomeComponent } from './badgesrank-home/badgesrank-home.compo
 import {CdsFileModule} from "@cds/angular";
 
 
-ClarityIcons.addIcons(noteIcon, userIcon, tasksIcon, cogIcon, infoCircleIcon, bullseyeIcon, timesCircleIcon, flameIcon, plusIcon, loginIcon,);
+ClarityIcons.addIcons(logoutIcon, noteIcon, userIcon, tasksIcon, cogIcon, infoCircleIcon, bullseyeIcon, timesCircleIcon, flameIcon, plusIcon, loginIcon,);
 ClarityIcons.addIcons(['plus-circle','<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>']);
 ClarityIcons.addIcons(['x','<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>']);
 ClarityIcons.addIcons(['img','<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 25" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M20.4 14.5L16 10 4 20"/></svg>']);

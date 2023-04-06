@@ -97,11 +97,7 @@ getAttemptForWhat(id:number):String{
 
 
   }
-
-  signOut(): void{
-    window.localStorage.clear();
-    this.router.navigate(['login']);
-  }
+  
   gotomanageprofile(){
     this.router.navigate(['manageprofile']);
   }
