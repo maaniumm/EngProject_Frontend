@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationGuard} from "../authentication.guard";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-side-nav',
@@ -10,7 +11,7 @@ export class SideNavComponent implements OnInit {
 
   collapsed:boolean = true;
 
-  constructor(private authenticationGuard:AuthenticationGuard) {
+  constructor(private authenticationGuard:AuthenticationGuard, private router: Router) {
 
 
   }
@@ -31,4 +32,8 @@ export class SideNavComponent implements OnInit {
     return this.authenticationGuard.checkIfUserIsAdmin();
   }
 
+  signOut(): void{
+    window.localStorage.clear();
+    this.router.navigate(['login']);
+  }
 }

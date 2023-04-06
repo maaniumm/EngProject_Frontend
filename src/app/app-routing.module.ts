@@ -5,6 +5,8 @@ import {ResetPasswordComponent} from "./reset-password/reset-password.component"
 import {HomeComponent} from "./home/home.component";
 import {RouterModule, Routes} from "@angular/router";
 import {AuthenticationGuard} from "./authentication.guard";
+import {OrgownerGuard} from "./orgowner.guard";
+import {AdminGuard} from "./admin.guard";
 import {ConfirmemailComponent} from "./confirmemail/confirmemail.component";
 import {ChangePasswordComponent} from "./change-password/change-password.component";
 import {ManageProfileComponent} from "./manage-profile/manage-profile.component";
@@ -28,29 +30,34 @@ import {BadgesrankHomeComponent} from './badgesrank-home/badgesrank-home.compone
 const routes: Routes = [
   {path: 'forgetpassword', component:ResetPasswordComponent},
   {path: 'login', component:LoginComponent},
-  {path:'register',component:RegisterComponent},
+  {path: 'register',component:RegisterComponent},
   {path: 'confirm', component: ConfirmemailComponent},
   {path: 'changepassword', component: ChangePasswordComponent},
-  {path: 'home' ,component:HomeComponent},
-  {path: 'manageprofile' ,component:ManageProfileComponent},
-  {path: 'userprofile' ,component:UserProfileComponent},
-  {path: 'createorg' ,component:CreateOrgComponent},
-  {path: 'createorder' ,component:CreateOrderComponent},
-  {path: 'createinsturctorattempt' ,component:CreateInstructorattemptComponent},
-  {path: 'createscouttempt' ,component:CreateScoutattemptComponent},
-  {path: 'createmeritbadgeattempt' ,component:CreateMeritbadgeattemptComponent},
-  {path: 'editorg' ,component:EditOrgComponent},
-  {path: 'badgesrankdashboard' ,component:BadgesrankDashboardComponent},
-  {path: 'manageorg' ,component:ManageOrgComponent},
-  {path: 'managesuborg' ,component:ManageSuborgComponent},
-  {path: 'manageorgcommander' ,component:ManageOrgCommanderComponent},
-  {path: 'managescoutprofile' ,component:ManageScoutProfileComponent},
-  {path: 'manageadminrights' ,component:ManageAdminRightsComponent},
-  {path: 'orderdashboard' ,component:OrderDashboardComponent},
-  {path: 'manageorgmembers' ,component:ManageOrgMembersComponent},
-  {path: 'badgesrankhome' ,component:BadgesrankHomeComponent},
   {path: '', canActivate:[AuthenticationGuard], children: [
-  {path: '' ,component:HomeComponent}]}
+      {path: '', canActivate: [AdminGuard], children:[
+          {path: 'manageadminrights' , component:ManageAdminRightsComponent}
+        ]},
+      {path: '', canActivate: [OrgownerGuard], children: [
+          {path: 'badgesrankhome' ,component:BadgesrankHomeComponent},
+          {path: 'manageorg' ,component:ManageOrgComponent},
+          {path: 'badgesrankdashboard' ,component:BadgesrankDashboardComponent},
+          {path: 'editorg' ,component:EditOrgComponent},
+          {path: 'createorg' ,component:CreateOrgComponent},
+          {path: 'manageorgmembers' ,component:ManageOrgMembersComponent},
+          {path: 'orderdashboard' ,component:OrderDashboardComponent},
+          {path: 'createorder' ,component:CreateOrderComponent},
+          {path: 'createinsturctorattempt' ,component:CreateInstructorattemptComponent},
+          {path: 'createscouttempt' ,component:CreateScoutattemptComponent},
+          {path: 'createmeritbadgeattempt' ,component:CreateMeritbadgeattemptComponent},
+          {path: 'managesuborg' ,component:ManageSuborgComponent},
+          {path: 'manageorgcommander' ,component:ManageOrgCommanderComponent},
+          {path: 'managescoutprofile' ,component:ManageScoutProfileComponent}
+        ]},
+      {path: 'home' ,component:HomeComponent},
+      {path: 'manageprofile' ,component:ManageProfileComponent},
+      {path: 'userprofile' ,component:UserProfileComponent},
+      {path: '' ,component:HomeComponent}
+    ]}
 ];
 
 @NgModule({
