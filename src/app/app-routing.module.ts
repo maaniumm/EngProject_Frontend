@@ -5,6 +5,8 @@ import {ResetPasswordComponent} from "./reset-password/reset-password.component"
 import {HomeComponent} from "./home/home.component";
 import {RouterModule, Routes} from "@angular/router";
 import {AuthenticationGuard} from "./authentication.guard";
+import {OrgownerGuard} from "./orgowner.guard";
+import {AdminGuard} from "./admin.guard";
 import {ConfirmemailComponent} from "./confirmemail/confirmemail.component";
 import {ChangePasswordComponent} from "./change-password/change-password.component";
 import {ManageProfileComponent} from "./manage-profile/manage-profile.component";
