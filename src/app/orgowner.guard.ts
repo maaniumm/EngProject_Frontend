@@ -21,7 +21,13 @@ export class OrgownerGuard implements CanActivate {
         return;
       }
     })
-    return answer;
+
+    if(answer){
+      return true;
+    }else {
+      this.router.navigate(['home']);
+      return false
+    }
   }
 
 }

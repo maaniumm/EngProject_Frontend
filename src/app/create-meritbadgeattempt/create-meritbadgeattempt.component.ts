@@ -108,7 +108,7 @@ export class CreateMeritbadgeattemptComponent implements OnInit {
             this.attemptTasks=[];
             this.availableMeritBadges=[];
             this.newAttempt=new Attempt();
-            this.router.navigate(['home']);
+            this.router.navigate(['badgesrankhome']);
 
 
           }

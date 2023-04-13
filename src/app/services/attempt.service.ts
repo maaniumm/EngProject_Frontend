@@ -29,7 +29,7 @@ export class AttemptService {
     let params = new HttpParams()
       .set('emailScout', emailScout)
       .set('organizationId', organizationId);
-    console.log(params)
+
     return this.http.post<CustomResponse>(`http://localhost:8080/api/v1/attempt/addAttemptScoutInstructorRank`,attempt,{params : params});
   }
 
@@ -43,7 +43,7 @@ export class AttemptService {
     let params = new HttpParams()
       .set('emailScout', emailScout)
       .set('organizationId', organizationId);
-    console.log(params)
+
     return this.http.post<CustomResponse>(`http://localhost:8080/api/v1/attempt/addAttemptScoutRank`,attempt,{params : params});
   }
 
@@ -56,7 +56,6 @@ export class AttemptService {
     let params = new HttpParams()
       .set('emailScout', emailScout)
       .set('organizationId', organizationId);
-    console.log(params)
     return this.http.post<CustomResponse>(`http://localhost:8080/api/v1/attempt/addAttemptMeritbadge`,attempt,{params : params});
   }
 

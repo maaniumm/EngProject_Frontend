@@ -48,7 +48,7 @@ export class CreateScoutattemptComponent implements OnInit {
     return this.availableScoutRank;
   }
 
-  //-Kopia
+
   public openPDF(){
     this.attemptService.getRulesPdf().subscribe((res)=>{
       let blob:Blob=res.body as Blob;
@@ -74,7 +74,7 @@ export class CreateScoutattemptComponent implements OnInit {
       }
     }
   }
-//Kopia
+
   submitAttempt(form: NgForm){
     if (this.attemptTasks.length === 0) {
       this.showErrorValidationModalEmptyTaskList = true;
@@ -90,7 +90,7 @@ export class CreateScoutattemptComponent implements OnInit {
             this.attemptTasks=[];
             this.availableScoutRank=[];
             this.newAttempt=new Attempt();
-            this.router.navigate(['home']);
+            this.router.navigate(['badgesrankhome']);
           }
           console.log(res)
         });

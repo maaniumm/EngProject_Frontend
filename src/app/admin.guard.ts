@@ -14,7 +14,14 @@ export class AdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return jwt_decode<any>(this.jwtService.tokenGetter()).roles.some((r : String) => r === 'ADMIN')
+
+
+    if(jwt_decode<any>(this.jwtService.tokenGetter()).roles.some((r : String) => r === 'ADMIN')){
+      return true;
+    }else {
+      this.router.navigate(['home']);
+      return false;
+    }
   }
 
 }
