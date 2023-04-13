@@ -100,7 +100,7 @@ export class CreateInstructorattemptComponent implements OnInit {
             this.attemptTasks=[];
             this.availableScoutInstructorRank=[];
             this.newAttempt=new Attempt();
-            this.router.navigate(['home']);
+            this.router.navigate(['badgesrankhome']);
 
         }
         });

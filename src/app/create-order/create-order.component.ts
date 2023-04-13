@@ -277,7 +277,7 @@ export class CreateOrderComponent implements OnInit {
         console.log(res.data.addOrder)
         form.resetForm();
         this.newOrder.activeQueueLineDTOList = [];
-        this.router.navigate(['home']);
+        this.router.navigate(['orderdashboard',{organizationId:this.staticOrganization}]);
       }
 
 
